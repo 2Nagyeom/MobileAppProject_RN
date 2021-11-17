@@ -21,6 +21,8 @@ const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
 
 const LoginPage = () => {
+  const navigation = useNavigation()
+
   const [id, setID] = useState('');
   const [pwd, setPWD] = useState('');
 
@@ -47,7 +49,6 @@ const LoginPage = () => {
   };
 
 
-  const navigation = useNavigation();
 
   return (
 
@@ -137,16 +138,20 @@ const LoginPage = () => {
           }}>
           <Text style={{ color: 'black' }}>뒤로가기</Text>
         </View>
-        <View style={{
-          width: chwidth - 40,
-          alignItems: 'center',
-          justifyContent: 'center',
+        <TouchableWithoutFeedback onPress={() => {
+          navigation.navigate('회원가입 페이지')
         }}>
-          <Text style={{
-            color: '#6485E6',
-            fontWeight: '900',
-          }}>아직 회원이 아니신가요?</Text>
-        </View>
+          <View style={{
+            width: chwidth - 40,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <Text style={{
+              color: '#6485E6',
+              fontWeight: '900',
+            }}>아직 회원이 아니신가요?</Text>
+          </View>
+        </TouchableWithoutFeedback>
       </View>
     </SafeAreaView >
   );
