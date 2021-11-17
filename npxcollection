@@ -1,0 +1,11 @@
+npm install @react-navigation/native //네비게이션- 화면여러개 구성할수 있게 해주는거
+npm install react-native-screens react-native-safe-area-context //네비게이션의 종속된 라이브러리들
+npm install @react-navigation/native-stack //네비게이션의 스택! 화면을 쌓아주는 라이브러리
+npm install react-native-auto-height-image //자동으로 height을 조정해주는 라이브러리
+npm install --save react-native-splash-screen //splash 스크린을 원하는 시점에 종료하기 위한 라이브러리
+npm install --save @react-native-firebase/app //firebase와 연동하게 해주는 라이브러리
+npm install --save @react-native-firebase/database //실시간데이터베이스 구축해주는 라이브러리
+npm install react-native-maps --save-exact // 구글맵 지도 보여주는 라이브러리
+npm install --save react-native-calendars //달력 보여주는 라이브러리
+yarn add @gorhom/bottom-sheet@^4 //버튼 누르면 하단 사이드바 나오게 하는 라이브러리
+yarn add react-native-reanimated react-native-gesture-handler //위의 라이브러리 하위 속성
