@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "667583647880",
+    "firebase_url": "https://moblieproject-6170e-default-rtdb.firebaseio.com",
+    "project_id": "moblieproject-6170e",
+    "storage_bucket": "moblieproject-6170e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667583647880:android:b9e48c13252f39dc9fcf3d",
+        "android_client_info": {
+          "package_name": "com.testing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "667583647880-a2jt3tvl74k057dqetkp2s1iqilo0sfc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOojz_3T0elt7GsjUb3Iglb4r5deK2yrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "667583647880-a2jt3tvl74k057dqetkp2s1iqilo0sfc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "667583647880-db5akdt75l8qrdeuqim0kojr365ft091.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.eunbi.mobileproject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
