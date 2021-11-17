@@ -35,14 +35,24 @@ const LoginPage = () => {
         console.log(snapshot.val());
         if (pwd != snapshot.val().pwd) {
           console.log('다름');
+          // Alert.alert('아이디 패스워드 오류')
           Alert.alert(
             "아이디 또는 패스워드를 확인해주세요",
+            "",
             [
               { text: "확인", onPress: () => console.log("OK Pressed") }
             ]
           );
         } else if (pwd == snapshot.val().pwd)
-          console.log(id + '로그인함');
+          console.log(snapshot.val().M_num + '로그인함');
+
+        if (snapshot.val().M_num.split('')[0] === 'g') {
+          Alert.alert('손님')
+          navigation.navigate('메인페이지')
+        } else {
+
+        }
+
       });
 
 
