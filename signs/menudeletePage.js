@@ -19,7 +19,7 @@ import AutoHeightImage from 'react-native-auto-height-image';
 const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
 
-const deletePage = () => {
+const menudeletePage = () => {
     const [id, setID] = useState('');
     const [pwd, setPWD] = useState('');
 
@@ -30,39 +30,37 @@ const deletePage = () => {
         <SafeAreaView style={{ height: '100%', width: '100%', backgroundColor: '#F7F7F7' }}>
 
             <View style={{ marginLeft: 20, marginBottom: 30 }}>
-
                 <View
                     style={{
                         width: chwidth - 40,
                         marginLeft: 20,
                         marginTop: 200,
                         color: 'black',
-
-                    }} />
-                <Text style={{ fontSize: 20 }}>당일예약자</Text>
+                    }}>
+                    <Text style={{ fontSize: 20 }}>당일예약자</Text>
+                </View>
                 <View style={{
                     borderWidth: 1,
                     width: chwidth - 40,
                     height: 0,
                     borderColor: '#6485E6',
                 }}>
-                    <View
-                        style={{
-                            marginTop: 10,
-                            borderRadius: 60,
-                            borderWidth: 1,
-                            width: chwidth - 40,
-                            height: 50,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundColor: '#6485E6',
-                            borderColor: '#6485E6',
-                        }}>
-                        <Text style={{
-                            color: 'black',
-                            fontWeight: '700'
-                        }}>예약자 확인하기</Text>
-                    </View>
+                </View>
+                <View
+                    style={{
+                        width: chwidth - 40,
+                        marginLeft: 20,
+                        marginTop: 200,
+                        color: 'black',
+                    }}>
+                    <Text style={{ fontSize: 20 }}>당일예약자</Text>
+                </View>
+                <View style={{
+                    borderWidth: 1,
+                    width: chwidth - 40,
+                    height: 0,
+                    borderColor: '#6485E6',
+                }}>
                 </View>
 
                 <View
@@ -120,4 +118,4 @@ const deletePage = () => {
     );
 };
 
-export default deletePage;
+export default menudeletePage;

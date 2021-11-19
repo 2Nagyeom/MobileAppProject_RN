@@ -18,7 +18,7 @@ import AutoHeightImage from 'react-native-auto-height-image';
 const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
 
-const enrollmentPage = () => {
+const menuenrollmentPage = () => {
     const [id, setID] = useState('');
 
 
@@ -115,4 +115,4 @@ const enrollmentPage = () => {
     );
 };
 
-export default enrollmentPage;
+export default menuenrollmentPage;
