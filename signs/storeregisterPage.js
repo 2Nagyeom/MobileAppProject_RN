@@ -67,17 +67,6 @@ const storeregisterPage = () => {
                     disableArrowRight={true}
                     disableAllTouchEventsForDisabledDays={true}
                     enableSwipeMonths={true}
-
-                    markingType={'period'}
-                    markedDates={{
-                        '2021-11-19': { startingDay: true, color: '#50cebb', textColor: 'white' },
-                        '2021-11-20': { color: '#70d7c7', textColor: 'white' },
-                        '2021-11-21': { color: '#70d7c7', textColor: 'white' },
-                        '2021-11-22': { color: '#70d7c7', textColor: 'white' },
-                        '2021-11-23': { color: '#70d7c7', textColor: 'white', marked: true, dotColor: 'white' },
-                        '2021-11-24': { color: '#70d7c7', textColor: 'white' },
-                        '2021-11-25': { endingDay: true, color: '#50cebb', textColor: 'white' }
-                    }}
                 />
             </View>
         </SafeAreaView >
