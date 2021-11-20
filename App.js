@@ -26,6 +26,7 @@ import imformationrevisePage from './signs/imformationrevisePage';
 import { NavigationContainer } from '@react-navigation/native'; //화면을 쌓아주는 레이어!
 import { createNativeStackNavigator } from '@react-navigation/native-stack'; //레이어 위에 올라가는 화면들!
 import { RecoilRoot } from 'recoil';
+import CurrentReservation from './reservation/currentReservation';
 
 
 const Stack = createNativeStackNavigator(); //화면 전환을 어떻게 할것인가! 그중에서 스택방식!
@@ -43,6 +44,8 @@ const App = () => {
           {/* <Stack.Screen name="로그인 페이지" component={LoginPage} />
           <Stack.Screen name="회원가입 페이지" component={RegisterPage} /> */}
           <Stack.Screen name="메인페이지" component={mainPage} />
+
+
 
 
           {/* <Stack.Screen name="매장사장 회원가입 페이지" component={M_RegisterPage} /> */}

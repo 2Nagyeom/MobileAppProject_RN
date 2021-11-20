@@ -36,6 +36,7 @@ const gps = require('../img/gps.png');
 const clock = require('../img/clock.png');
 
 const mainPage = () => {
+    const navigation = useNavigation()
 
     const bottomSheetModalRef = useRef(< BottomSheetModal />);
     const mapRef = useRef(<MapView></MapView>)
@@ -71,6 +72,9 @@ const mainPage = () => {
     useEffect(() => {
         getStore()
     }, [])
+
+    const [currentWait, setCurrentWait] = useState(0)
+    const [currentTable, setCurrentTable] = useState(0)
 
     const [atStoreNum, setAtStoreNum] = useRecoilState(atomStorenum) //마커 선택한 스토어 번호
     const [atStoreName, setAtStoreName] = useRecoilState(atomStoreName) //마커 선택한 스토어 이름
@@ -127,6 +131,9 @@ const mainPage = () => {
 
                                     setAtStoreNum(value.M_num)
                                     setAtStoreName(value.name)
+
+                                    setCurrentTable(value.quest)
+                                    setCurrentWait(value.wait)
                                 }}
                                 pinColor="#00c7ae" coordinate={{ latitude: Number(value.gps.split('/')[0]), longitude: Number(value.gps.split('/')[1]) }} />
                         )
@@ -163,20 +170,34 @@ const mainPage = () => {
                                 }}>{pName}</Text>
                             </View>
 
-                            <View
-                                style={{
-                                    marginTop: 20,
-                                    borderRadius: 60,
-                                    borderWidth: 1,
-                                    width: chwidth - 40,
-                                    height: 50,
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    backgroundColor: '#6485E6',
-                                    borderColor: '#6485E6',
-                                }}>
-                                <Text style={{ color: 'white' }}>실시간 예약하기</Text>
-                            </View>
+                            <TouchableWithoutFeedback onPress={() => {
+                                // navigation.navigate('실시간 예약 페이지')
+                                Alert.alert(`현재 ${atStoreName} 상황`,
+                                    `테이블 수 : ${currentTable}개\n대기 팀 수 : ${currentWait}팀\n\n예약하시겠습니까?
+                                `, [
+                                    {
+                                        text: "취소",
+                                        onPress: () => console.log("Cancel Pressed"),
+                                        style: "cancel"
+                                    },
+                                    { text: "예약하기", onPress: () => console.log("OK Pressed") }
+                                ])
+                            }}>
+                                <View
+                                    style={{
+                                        marginTop: 20,
+                                        borderRadius: 60,
+                                        borderWidth: 1,
+                                        width: chwidth - 40,
+                                        height: 50,
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        backgroundColor: '#6485E6',
+                                        borderColor: '#6485E6',
+                                    }}>
+                                    <Text style={{ color: 'white' }}>실시간 예약하기</Text>
+                                </View>
+                            </TouchableWithoutFeedback>
                             <View
                                 style={{
                                     marginTop: 10,
