@@ -124,11 +124,11 @@ const LoginPage = () => {
         </View>
       </ScrollView>
 
-      <View style={{ marginLeft: 20, marginBottom: 50 }}>
+      <View style={{ marginLeft: 20 }}>
         <TouchableWithoutFeedback onPress={() => { databasefunction() }}>
           <View
             style={{
-              marginTop: 60,
+
               borderRadius: 60,
               borderWidth: 1,
               width: chwidth - 40,

@@ -12,6 +12,8 @@ import {
     Dimensions
 } from 'react-native';
 
+import { utils } from '@react-native-firebase/app';
+import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/core';
 import AutoHeightImage from 'react-native-auto-height-image';
 
@@ -19,8 +21,8 @@ const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
 
 const menuenrollmentPage = () => {
-    const [id, setID] = useState('');
 
+    const reference = storage().ref('/img/t-shirts/black-t-shirt-sm.png');
 
     const navigation = useNavigation();
 
@@ -45,7 +47,7 @@ const menuenrollmentPage = () => {
                                     color: 'black',
                                 }}
                                 placeholder={'메뉴이름입력'}
-                                value={id}
+
                             />
                         </View>
                         <View style={{ alignItems: 'center' }}>
@@ -62,7 +64,13 @@ const menuenrollmentPage = () => {
                                     alignItems: 'center',
                                     color: 'black',
                                 }}>
-                                <Text>사진등록</Text>
+                                <Text onPress={async () => {
+                                    // path to existing file on filesystem
+                                    const pathToFile = `${utils.FilePath.PICTURES_DIRECTORY}/m1_food1.png`;
+                                    // uploads file
+                                    await reference.putFile(pathToFile);
+                                }}>사진등록</Text>
+
                             </View>
                         </View>
                         <View style={{ marginTop: 10 }}>
@@ -74,7 +82,7 @@ const menuenrollmentPage = () => {
                                     color: 'black',
                                 }}
                                 placeholder={'메뉴간단설명'}
-                                value={id}
+
                             />
                         </View>
                     </View>

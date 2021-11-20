@@ -21,6 +21,7 @@ import mainPage from './signs/mainPage';
 import M_storedetailPage from './signs/m_storedetailPage';
 import test from './signs/test';
 import storelookPage from './signs/storelookPage';
+import imformationrevisePage from './signs/imformationrevisePage';
 
 import { NavigationContainer } from '@react-navigation/native'; //화면을 쌓아주는 레이어!
 import { createNativeStackNavigator } from '@react-navigation/native-stack'; //레이어 위에 올라가는 화면들!
