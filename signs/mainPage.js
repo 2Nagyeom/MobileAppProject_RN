@@ -24,6 +24,8 @@ import database from '@react-native-firebase/database';
 import { useNavigation } from '@react-navigation/core';
 import AutoHeightImage from 'react-native-auto-height-image';
 import { BottomSheetModal, BottomSheetModalProvider, BottomSheetScrollView } from '@gorhom/bottom-sheet';
+import { useRecoilState } from 'recoil';
+import { atomStoreName, atomStorenum } from '../atom/atom';
 
 const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
@@ -59,9 +61,9 @@ const mainPage = () => {
                 setStoreArray([]);
                 Alert.alert('주변가계가 없습니다.')
             } else {
-                setStoreArray(res.val());
+                setStoreArray((rr) => [...rr, res.val().M1, res.val().M2]);
                 console.log(res.val())
-                console.log(res.val().M1)
+                console.log()
             }
         });
     }
@@ -70,6 +72,8 @@ const mainPage = () => {
         getStore()
     }, [])
 
+    const [atStoreNum, setAtStoreNum] = useRecoilState(atomStorenum) //마커 선택한 스토어 번호
+    const [atStoreName, setAtStoreName] = useRecoilState(atomStoreName) //마커 선택한 스토어 이름
 
     const [mapheight, setMapHeight] = useState('100%'); //마커 클릭시 맵의 크기 변경을 위한 함수
 
@@ -108,15 +112,25 @@ const mainPage = () => {
                         latitudeDelta: 0.025, //위도 확대(1에 가까워질 수록 zoom out)
                         longitudeDelta: 0.025, //경도 확대(1에 가까워질 수록 zoom out)
                     }}>
-                    {/* {storeArray.map((value, index) => {
-                        <Marker key={index} title={value.name} identifier={value.name} onPress={
-                            (e) => {
-                                console.log(e.nativeEvent)
-                                // Alert.alert(e.id + '클릭됨')
-                                handlePresentModalPress()
-                            }}
-                            pinColor="#00c7ae" coordinate={{ latitude: Number(value.gps.split('/')[0]), longitude: Number(value.gps.split('/')[1]) }} />
-                    })} */}
+                    {storeArray.map((value, index) => {
+                        console.log(value)
+                        return (
+                            <Marker key={index} title={value.name} identifier={value.name} onPress={
+                                (e) => {
+                                    console.log(e.nativeEvent)
+                                    // Alert.alert(e.id + '클릭됨')
+                                    handlePresentModalPress()
+                                    setPName(value.name)
+                                    setPAdress(value.adress)
+                                    setPNumber(value.call)
+                                    setPTime(value.time)
+
+                                    setAtStoreNum(value.M_num)
+                                    setAtStoreName(value.name)
+                                }}
+                                pinColor="#00c7ae" coordinate={{ latitude: Number(value.gps.split('/')[0]), longitude: Number(value.gps.split('/')[1]) }} />
+                        )
+                    })}
 
                     {/* <Marker title="은비네칼국수" identifier={'은비네칼국수'} onPress={
                         e => {
