@@ -42,6 +42,7 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
 
+          <Stack.Screen name="예약페이지" component={storeregisterPage} />
 
           <Stack.Screen name="로그인 페이지" component={LoginPage} />
           <Stack.Screen name="회원가입 페이지" component={RegisterPage} />
