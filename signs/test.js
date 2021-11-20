@@ -66,6 +66,20 @@ const test = () => {
 
         <SafeAreaView style={{ height: '100%', width: '100%', backgroundColor: '#F7F7F7' }}>
             <ScrollView>
+
+                <View style={{ width: chwidth, height: 70, borderRadius: 40, borderWidth: 1, flexDirection: 'row' }}>
+                    <View style={{ width: chwidth / 2 - 1, height: '100%' }}>
+                    </View>
+
+                    <View style={{ height: 70, borderWidth: 0.5, width: 0 }}>
+                    </View>
+
+                    <View style={{ width: chwidth / 2, height: '100%' }}>
+                    </View>
+
+                </View>
+
+
                 <View
                     style={{
                         width: chwidth - 40,
