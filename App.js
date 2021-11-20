@@ -27,6 +27,7 @@ import { NavigationContainer } from '@react-navigation/native'; //화면을 쌓�
 import { createNativeStackNavigator } from '@react-navigation/native-stack'; //레이어 위에 올라가는 화면들!
 import { RecoilRoot } from 'recoil';
 import CurrentReservation from './reservation/currentReservation';
+import qrcodePage from './reservation/qrCodePage';
 
 
 const Stack = createNativeStackNavigator(); //화면 전환을 어떻게 할것인가! 그중에서 스택방식!
@@ -41,11 +42,12 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
 
-          {/* <Stack.Screen name="로그인 페이지" component={LoginPage} />
-          <Stack.Screen name="회원가입 페이지" component={RegisterPage} /> */}
-          <Stack.Screen name="메인페이지" component={mainPage} />
 
-          <Stack.Screen name="실시간 예약 페이지" component={CurrentReservation} />
+          <Stack.Screen name="로그인 페이지" component={LoginPage} />
+          <Stack.Screen name="회원가입 페이지" component={RegisterPage} />
+          <Stack.Screen name="메인페이지" component={mainPage} />
+          <Stack.Screen name="큐얼코드페이지" component={qrcodePage} />
+
 
 
 
@@ -58,6 +60,7 @@ const App = () => {
           {/* <Stack.Screen name="매장사장상세페이지" component={M_storedetailPage} /> */}
           {/* <Stack.Screen name="매장둘러보기페이지" component={storelookPage} /> */}
           {/* <Stack.Screen name="테스트 페이지" component={test} /> */}
+
 
 
 
