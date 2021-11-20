@@ -48,7 +48,7 @@ const App = () => {
         {/* <Stack.Screen name="매장예약 페이지" component={storeregisterPage} /> */}
         <Stack.Screen name="메인페이지" component={mainPage} />
         {/* <Stack.Screen name="매장사장상세페이지" component={M_storedetailPage} /> */}
-        {/* <Stack.Screen name="매장둘러보기페이지" component={storelookPage} /> */}
+        <Stack.Screen name="매장둘러보기페이지" component={storelookPage} />
         {/* <Stack.Screen name="테스트 페이지" component={test} /> */}
 
 

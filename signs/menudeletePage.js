@@ -28,89 +28,107 @@ const menudeletePage = () => {
     return (
 
         <SafeAreaView style={{ height: '100%', width: '100%', backgroundColor: '#F7F7F7' }}>
-
-            <View style={{ marginLeft: 20, marginBottom: 30 }}>
-                <View
-                    style={{
-                        width: chwidth - 40,
-                        marginLeft: 20,
-                        marginTop: 200,
-                        color: 'black',
-                    }}>
-                    <Text style={{ fontSize: 20 }}>당일예약자</Text>
-                </View>
+            <View style={{
+                marginTop: 10,
+                alignItems: 'center',
+            }}>
+                <AutoHeightImage
+                    width={100}
+                    source={Logo}
+                />
+            </View>
+            <ScrollView style={{
+                flex: 1,
+            }}>
                 <View style={{
-                    borderWidth: 1,
+                    marginTop: 50,
+                    marginLeft: 20,
+                    marginBottom: 30,
                     width: chwidth - 40,
-                    height: 0,
-                    borderColor: '#6485E6',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                 }}>
-                </View>
-                <View
-                    style={{
-                        width: chwidth - 40,
-                        marginLeft: 20,
-                        marginTop: 200,
-                        color: 'black',
+                    <View style={{
+                        marginTop: 30,
                     }}>
-                    <Text style={{ fontSize: 20 }}>당일예약자</Text>
-                </View>
-                <View style={{
-                    borderWidth: 1,
-                    width: chwidth - 40,
-                    height: 0,
-                    borderColor: '#6485E6',
-                }}>
-                </View>
-
-                <View
-                    style={{
-                        width: chwidth - 70,
-                        marginLeft: 20,
-                        marginTop: 200,
-                        alignItems: 'center',
-
-
-                    }}>
-                    <Text style={{
-                        color: '#6485E6',
-                        fontSize: 24,
-                    }}>다른 날에 예약한 사람이 있어요!</Text>
-                </View>
-                <View style={{
-                    borderWidth: 1,
-                    width: chwidth - 40,
-                    height: 0,
-                    borderColor: '#6485E6',
-
-                }}>
-                    <View
-                        style={{
-                            marginTop: 10,
-                            borderRadius: 60,
+                        <View style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                        }}>
+                            <Text style={{ fontSize: 20 }}>메뉴이름</Text>
+                            <Text style={{ fontSize: 20 }}>5000원</Text>
+                        </View>
+                        <View style={{
                             borderWidth: 1,
                             width: chwidth - 40,
-                            height: 50,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundColor: '#6485E6',
+                            height: 0,
                             borderColor: '#6485E6',
+                        }} />
+                    </View>
+                    <View style={{
+                        marginTop: 30,
+                    }}>
+                        <View style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
                         }}>
-                        <Text style={{ color: 'black', fontWeight: '700' }}>예약자 확인하기</Text>
+                            <Text style={{ fontSize: 20 }}>메뉴이름</Text>
+                            <Text style={{ fontSize: 20 }}>5000원</Text>
+                        </View>
+                        <View style={{
+                            borderWidth: 1,
+                            width: chwidth - 40,
+                            height: 0,
+                            borderColor: '#6485E6',
+                        }} />
+                    </View>
+                    <View style={{
+                        marginTop: 30,
+                    }}>
+                        <View style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                        }}>
+                            <Text style={{ fontSize: 20 }}>메뉴이름</Text>
+                            <Text style={{ fontSize: 20 }}>5000원</Text>
+                        </View>
+                        <View style={{
+                            borderWidth: 1,
+                            width: chwidth - 40,
+                            height: 0,
+                            borderColor: '#6485E6',
+                        }} />
                     </View>
                 </View>
+            </ScrollView>
+            <View style={{
+                alignItems: 'center',
+                marginTop: 10,
+            }}>
+                <View style={{
+                    borderRadius: 60,
+                    borderWidth: 1,
+                    width: chwidth - 40,
+                    height: 50,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderColor: '#6485E6',
+                    backgroundColor: '#6485E6',
+                    marginBottom: 10,
 
-                <View style={{ marginTop: 20 }}
-                    style={{
-                        marginTop: 150,
-                        borderRadius: 60,
-                        borderWidth: 1,
-                        width: chwidth - 40,
-                        height: 50,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        borderColor: '#6485E6',
-                    }}>
+                }}>
+                    <Text style={{ color: 'black' }}>메뉴 등록하기</Text>
+                </View>
+                <View style={{
+                    borderRadius: 60,
+                    borderWidth: 1,
+                    width: chwidth - 40,
+                    height: 50,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderColor: '#6485E6',
+                    marginBottom: 10,
+                }}>
                     <Text style={{ color: 'black' }}>뒤로가기</Text>
                 </View>
             </View>
