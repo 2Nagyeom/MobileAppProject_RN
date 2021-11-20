@@ -20,12 +20,12 @@ import {
 } from 'react-native';
 
 import database from '@react-native-firebase/database';
-
+import QRCode from 'react-native-qrcode-svg';
 import { useNavigation } from '@react-navigation/core';
 import AutoHeightImage from 'react-native-auto-height-image';
 import { BottomSheetModal, BottomSheetModalProvider, BottomSheetScrollView } from '@gorhom/bottom-sheet';
-import { useRecoilState } from 'recoil';
-import { atomStoreName, atomStorenum } from '../atom/atom';
+import { noWait, useRecoilState } from 'recoil';
+import { atomStoreName, atomStorenum, atomUserId } from '../atom/atom';
 
 const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
@@ -69,13 +69,37 @@ const mainPage = () => {
         });
     }
 
+
+    function qrcodereservation(params) {
+        database()
+            .ref('/reserve/' + atStoreNum + '/' + atId)
+            .set({
+                id: atId,
+                time: 'now',
+                day: 'now',
+                phone: 'test',
+                M_num: atStoreName,
+            })
+            .then(() => {
+                Alert.alert("예약되었습니다!");
+                navigation.navigate('큐얼코드페이지');
+                console.log('함수실행됌');
+            })
+
+
+    }
+
     useEffect(() => {
         getStore()
     }, [])
 
+
+
+
     const [currentWait, setCurrentWait] = useState(0)
     const [currentTable, setCurrentTable] = useState(0)
 
+    const [atId, setAtId] = useRecoilState(atomUserId) //유저 아이디
     const [atStoreNum, setAtStoreNum] = useRecoilState(atomStorenum) //마커 선택한 스토어 번호
     const [atStoreName, setAtStoreName] = useRecoilState(atomStoreName) //마커 선택한 스토어 이름
 
@@ -180,7 +204,12 @@ const mainPage = () => {
                                         onPress: () => console.log("Cancel Pressed"),
                                         style: "cancel"
                                     },
-                                    { text: "예약하기", onPress: () => console.log("OK Pressed") }
+                                    {
+                                        text: "예약하기", onPress: () => {
+                                            console.log("OK Pressed"),
+                                                qrcodereservation();
+                                        }
+                                    }
                                 ])
                             }}>
                                 <View
