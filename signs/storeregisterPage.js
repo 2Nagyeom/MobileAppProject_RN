@@ -21,7 +21,7 @@ LocaleConfig.locales['fr'] = {
     monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월.', '8월', '9월', '10월', '11월', '12월'],
     dayNames: ['Sat', 'Sun', 'Mon', 'Tuse', 'Wed', 'Thur', 'Fri'],
     dayNamesShort: ['토', '일', '월', '화', '수', '목', '금'],
-    today: '11월\'11일',
+
 };
 LocaleConfig.defaultLocale = 'fr';
 
@@ -32,13 +32,11 @@ const storeregisterPage = () => {
     return (
         <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
             <View style={{
-                paddingBottom: '5%',
                 alignItems: 'center',
                 justifyContent: 'center',
             }}>
                 <Text style={{
-                    paddingTop: '10%',
-                    fontSize: 40,
+                    fontSize: 30,
                     fontWeight: "bold",
                     color: '#6485E6',
                 }}>일정보기</Text>
