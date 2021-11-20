@@ -53,7 +53,7 @@ const App = () => {
         {/* <Stack.Screen name="메인페이지" component={mainPage} /> */}
         {/* <Stack.Screen name="매장사장상세페이지" component={M_storedetailPage} /> */}
         {/* <Stack.Screen name="매장둘러보기페이지" component={storelookPage} /> */}
-        <Stack.Screen name="메뉴 등록 페이지" component={imformationrevisePage} />
+        {/* <Stack.Screen name="개인정보수정페이지" component={imformationrevisePage} /> */}
         {/* <Stack.Screen name="테스트 페이지" component={test} /> */}
 
 

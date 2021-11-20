@@ -26,6 +26,9 @@ const imformationrevisePage = () => {
     const [pwd, setPWD] = useState('');
     const [pwd_check, setPWD_CHECK] = useState('');
     const [num, setNUM] = useState('');
+    const [storename, setSTORENAME] = useState('');
+    const [storenum, setSTORENUM] = useState('');
+    const [storeadress, setADRESS] = useState('');
 
     const navigation = useNavigation();
 
@@ -119,31 +122,58 @@ const imformationrevisePage = () => {
                                     placeholder={'NUM'}
                                 />
                             </View>
+                            <View>
+                                <View
+                                    style={{
+                                        marginTop: 35,
+                                        width: chwidth - 40,
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        marginBottom: 15,
+                                    }}>
+                                    <Text style={{
+                                        color: '#6485E6',
+                                        fontSize: 20,
+                                    }}>매장사장이신가요?</Text>
+                                </View>
+                                <View style={{ marginTop: 60 }}
+                                    style={{
+                                        marginTop: 15,
+                                        borderRadius: 60,
+                                        borderWidth: 1,
+                                        width: chwidth - 40,
+                                        height: 50,
+                                        borderColor: '#6485E6',
+                                        justifyContent: 'center',
+                                    }}>
+                                    <TextInput onChangeText={(storename) => { setSTORENAME(storename) }}
+                                        style={{ width: chwidth - 50, marginLeft: 10 }}
+                                        placeholder={'STORE NAME'}
+                                    />
+                                </View>
+                                <TouchableWithoutFeedback onPress={() => { Alert.alert("관리자가 확인 후 매장사장으로 변경될 예정입니다!"); }}>
+                                    <View
+                                        style={{
+                                            marginTop: 15,
+                                            borderRadius: 60,
+                                            borderWidth: 1,
+                                            width: chwidth - 40,
+                                            height: 50,
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            backgroundColor: '#6485E6',
+                                            borderColor: '#6485E6',
+                                        }}>
+                                        <Text style={{ color: 'white' }}>인증하기</Text>
+                                    </View>
+                                </TouchableWithoutFeedback>
+                            </View>
                         </View>
                     </View>
                 </View>
             </ScrollView>
 
-            <View style={{
-                marginLeft: 20
-            }}>
-                <TouchableWithoutFeedback onPress={() => {
-                    navigation.navigate('테스트 페이지')
-                }}>
-                    <View
-                        style={{
-                            width: chwidth - 40,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginBottom: 15,
-                        }}>
-                        <Text style={{
-                            color: '#6485E6',
-                            fontSize: 20,
-                        }}>매장사장이신가요?</Text>
-                    </View>
-                </TouchableWithoutFeedback>
-            </View>
+
             <TouchableWithoutFeedback onPress={() => { databasefunction() }}>
                 <View
                     style={{
