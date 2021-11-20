@@ -11,7 +11,8 @@ import {
   Image,
   TouchableWithoutFeedback,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  Alert
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/core';
@@ -31,20 +32,33 @@ const RegisterPage = () => {
 
   const databasefunction = () => {
 
-    database()
-      .ref('/users/guest/' + id)
-      .set({
-        id: id,
-        pwd: pwd,
-        pwd_check: pwd_check,
-        num: num,
+    if (pwd === pwd_check && (id != '' && pwd != '' && pwd_check != '' && num != '')) {
+      console.log('같음!')
+      const databaseref = database().ref('/users/' + id);
 
+
+      databaseref.once('value').then((res) => {
+        console.log(res.val())
+        if (res.val() === null) {
+          databaseref.set({
+            M_num: 'g1',
+            id: id,
+            pwd: pwd,
+            num: num,
+          })
+            .then(() => {
+              console.log('----------------데이터 삽입성공-------------------')
+              console.log(id);
+
+            });
+        } else {
+          Alert.alert("동일아이디가 존재합니다!");
+        }
       })
-      .then(() => {
-        console.log('----------------데이터 삽입성공-------------------')
-        console.log(id);
+    } else {
+      Alert.alert('비밀번호를 확인하거나 모든 칸을 채워주세요!')
+    }
 
-      });
 
   };
 

@@ -11,7 +11,8 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   Dimensions,
-  Alert
+  Alert,
+  ToastAndroid
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/core';
@@ -47,7 +48,8 @@ const LoginPage = () => {
           console.log(snapshot.val().M_num + '로그인함');
 
         if (snapshot.val().M_num.split('')[0] === 'g') {
-          Alert.alert('손님')
+          // Alert.alert('손님')
+          ToastAndroid.show('로그인되었습니다!', ToastAndroid.SHORT);
           navigation.navigate('메인페이지')
         } else {
 
