@@ -9,3 +9,4 @@ npm install react-native-maps --save-exact // 구글맵 지도 보여주는 라�
 npm install --save react-native-calendars //달력 보여주는 라이브러리
 yarn add @gorhom/bottom-sheet@^4 //버튼 누르면 하단 사이드바 나오게 하는 라이브러리
 yarn add react-native-reanimated react-native-gesture-handler //위의 라이브러리 하위 속성
+yarn add @react-native-firebase/storage //파이어베이스에 사진 저장하기
