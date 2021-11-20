@@ -41,7 +41,7 @@ const App = () => {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
 
           {/* <Stack.Screen name="로그인 페이지" component={LoginPage} />
-        <Stack.Screen name="회원가입 페이지" component={RegisterPage} /> */}
+          <Stack.Screen name="회원가입 페이지" component={RegisterPage} /> */}
           <Stack.Screen name="메인페이지" component={mainPage} />
 
 
