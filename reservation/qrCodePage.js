@@ -22,6 +22,9 @@ import { atomUserId } from '../atom/atom';
 
 import RNQRGenerator from 'rn-qr-generator';
 import AutoHeightImage from 'react-native-auto-height-image';
+import { color } from 'react-native-reanimated';
+
+const chwidth = Dimensions.get('window').width;
 
 
 const qrcodePage = () => {
@@ -72,16 +75,40 @@ const qrcodePage = () => {
 
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-            <View style={{ marginBottom: 10, }}>
-                <Text style={{ fontSize: 20, }}>입장 QR코드 입니다!</Text>
+            <View style={{ marginBottom: 20, }}>
+                <Text style={{
+                    fontSize: 30,
+                    fontWeight: 'bold',
+                    color: '#6485E6'
+                }}>입장 QR코드 입니다!</Text>
                 {/* <Text>{userQrCode}</Text> */}
             </View>
-            <Image source={{ uri: userQrCode }} style={{ backgroundColor: 'white', width: 200, height: 200 }} />
+            <View>
+                <View style={{
+                    marginRight: 15,
+                    borderRadius: 60,
+                    borderWidth: 1,
+                    width: chwidth - 70,
+                    marginLeft: 20,
+                    height: 300,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#6485E6',
+                    borderColor: '#6485E6',
+                }}>
+                    <Image source={{ uri: userQrCode }} style={{ backgroundColor: 'white', width: 200, height: 200 }} />
+                </View>
+            </View>
+
             <TouchableWithoutFeedback onPress={() => {
                 navigation.navigate('메인페이지');
             }}>
-                <View style={{ marginTop: 40, }}>
-                    <Text style={{ fontSize: 15 }}>뒤로가기</Text>
+                <View style={{ marginTop: 30, }}>
+                    <Text style={{
+                        fontSize: 30,
+                        fontWeight: 'bold',
+                        color: '#6485E6'
+                    }}>뒤로가기</Text>
                 </View>
             </TouchableWithoutFeedback>
         </View>
