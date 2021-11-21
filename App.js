@@ -49,6 +49,7 @@ const App = () => {
           <Stack.Screen name="큐얼코드페이지" component={qrcodePage} />
 
 
+
           <Stack.Screen name="매장사장 메인페이지" component={ManagerPage} />
           <Stack.Screen name="매장사장 상세페이지" component={M_storedetailPage} />
           <Stack.Screen name="메뉴 등록 페이지" component={menuenrollmentPage} />

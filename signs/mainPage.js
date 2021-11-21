@@ -229,20 +229,24 @@ const mainPage = () => {
                                     <Text style={{ color: 'white' }}>실시간 예약하기</Text>
                                 </View>
                             </TouchableWithoutFeedback>
-                            <View
-                                style={{
-                                    marginTop: 10,
-                                    borderRadius: 60,
-                                    borderWidth: 1,
-                                    width: chwidth - 40,
-                                    height: 50,
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    backgroundColor: '#6485E6',
-                                    borderColor: '#6485E6',
-                                }}>
-                                <Text style={{ color: 'white' }}>예약하기</Text>
-                            </View>
+                            <TouchableWithoutFeedback onPress={() => {
+                                navigation.navigate('예약페이지')
+                            }}>
+                                <View
+                                    style={{
+                                        marginTop: 10,
+                                        borderRadius: 60,
+                                        borderWidth: 1,
+                                        width: chwidth - 40,
+                                        height: 50,
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        backgroundColor: '#6485E6',
+                                        borderColor: '#6485E6',
+                                    }}>
+                                    <Text style={{ color: 'white' }}>예약하기</Text>
+                                </View>
+                            </TouchableWithoutFeedback>
                             <View style={{
                                 marginTop: 20
                             }}>

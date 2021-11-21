@@ -12,14 +12,15 @@ import {
     TouchableWithoutFeedback,
     TouchableOpacity,
     Dimensions,
-    Button
+    Button,
+    Alert
 } from 'react-native';
 
 import database from '@react-native-firebase/database';
 import DatePicker from 'react-native-date-picker'
 import { noWait, useRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/core';
-import { atomStorenum, atomUserId } from '../atom/atom';
+import { atomStorenum, atomUserId, atomUserPhone } from '../atom/atom';
 
 LocaleConfig.locales['fr'] = {
     monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
@@ -34,24 +35,51 @@ LocaleConfig.defaultLocale = 'fr';
 
 
 const storeregisterPage = () => {
-
+    const navigation = useNavigation()
+    // ///////////////////////////////////////////////////
     const databasefunction = () => {
-        database()
-            .ref('/reserve/' + atStoreNum)
-            .set({
-                id: atId,
-                day: date,
-                time: time,
+        Alert.alert('예약정보를 확인해주세요!', `날짜 : ${date}\n시간 : ${timeString}\n위의 정보로 예약하시겠습니까?`, [
+            {
+                text: "취소",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+            },
+            {
+                text: "예약하기", onPress: () => {
+                    console.log("OK Pressed")
+                    database()
+                        .ref(`/reserve/${atStoreNum}/${atId}`)
+                        .set({
+                            id: atId,
+                            day: date,
+                            time: timeString,
+                            M_num: atStoreNum,
+                            phone: atPhone,
+                        })
+                        .then(() => {
+                            console.log('-------------------매장정보---------------------');
+                            console.log(time);
 
-            })
-            .then(() => {
-                console.log('-------------------매장정보---------------------');
-                console.log(time);
-
-
-            });
+                            QrcodeSave()
+                        });
+                }
+            }
+        ])
     };
 
+    function QrcodeSave(params) {
+        database()
+            .ref(`/users/${atId}`)
+            .update({
+                qrcode: atStoreNum + '/' + atId + '/' + date + '/' + timeString + '/' + atPhone,
+            })
+            .then(() => {
+                console.log('-------------------qrsave 완료---------------------');
+
+                navigation.navigate('큐얼코드페이지')
+            });
+    }
+    ///////////////////////////////////////////////////////////////
 
 
 
@@ -62,10 +90,13 @@ const storeregisterPage = () => {
 
     const [atId, setAtId] = useRecoilState(atomUserId) //유저 아이디
     const [atStoreNum, setAtStoreNum] = useRecoilState(atomStorenum) //마커 선택한 스토어 번호
-
+    const [atPhone, setAtPhone] = useRecoilState(atomUserPhone) //유저 번호
 
     const [date, setDate] = useState('')
     const [time, setTime] = useState(new Date())
+
+    const [timeString, setTimeString] = useState(time.getHours() + ':' + (String(time.getMinutes()).length == 1 ? '0' + time.getMinutes() : time.getMinutes()))
+
 
 
     return (
@@ -112,7 +143,11 @@ const storeregisterPage = () => {
                 alignItems: 'center',
                 marginBottom: 30,
             }}>
-                <DatePicker mode="time" date={time} onDateChange={setTime} />
+                <DatePicker mode="time" date={time} onDateChange={(time) => {
+                    setTime(time)
+                    setTimeString(time.getHours() + ':' + (String(time.getMinutes()).length == 1 ? '0' + time.getMinutes() : time.getMinutes()))
+                    console.log(time.getHours() + ':' + (String(time.getMinutes()).length == 1 ? '0' + time.getMinutes() : time.getMinutes()))
+                }} />
             </View>
             <TouchableWithoutFeedback onPress={() => { databasefunction() }}>
                 <View
