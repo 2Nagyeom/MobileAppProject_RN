@@ -20,7 +20,6 @@ import {
 } from 'react-native';
 
 import database from '@react-native-firebase/database';
-import QRCode from 'react-native-qrcode-svg';
 import { useNavigation } from '@react-navigation/core';
 import AutoHeightImage from 'react-native-auto-height-image';
 import { BottomSheetModal, BottomSheetModalProvider, BottomSheetScrollView } from '@gorhom/bottom-sheet';

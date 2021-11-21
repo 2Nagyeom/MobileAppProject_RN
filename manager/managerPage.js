@@ -95,12 +95,12 @@ const ManagerPage = () => {
           <TouchableWithoutFeedback onPress={() => {
             // navigation.navigate('실시간 예약 페이지')
             Alert.alert(
-              `테이블 수 : ${currentTable}개\n대기 팀 수 : ${currentWait}팀\n`,
+              `테이블 수 : ${currentTable}개\n대기 팀 수 : ${currentWait}팀\n`, "",
               [
                 {
                   text: "수정하기", onPress: () => {
                     console.log("수정하기 누름")
-                    navigation.navigate("CurrentReservation")
+                    navigation.navigate("현재예약자 확인 페이지")
                   }
                 }
               ])
