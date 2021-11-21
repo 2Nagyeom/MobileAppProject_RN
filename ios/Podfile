@@ -15,6 +15,7 @@ target 'testing' do
   
   rn_maps_path  =  '../node_modules/react-native-maps'
   pod  'react-native-google-maps' ,  :path  =>  rn_maps_path
+  pod 'RNSVG', path: '../node_modules/react-native-svg/RNSVG.podspec'
   
   config = use_native_modules!
   

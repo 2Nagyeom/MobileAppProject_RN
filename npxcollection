@@ -7,6 +7,7 @@ npm install --save @react-native-firebase/app //firebase와 연동하게 해주�
 npm install --save @react-native-firebase/database //실시간데이터베이스 구축해주는 라이브러리
 npm install react-native-maps --save-exact // 구글맵 지도 보여주는 라이브러리
 npm install --save react-native-calendars //달력 보여주는 라이브러리
+npm install react-native-date-picker //시간 선택용 라이브러리
 yarn add @gorhom/bottom-sheet@^4 //버튼 누르면 하단 사이드바 나오게 하는 라이브러리
 yarn add react-native-reanimated react-native-gesture-handler //위의 라이브러리 하위 속성
 yarn add react-native-svg react-native-qrcode-svg //QR코드 생성하는 라이브러리
