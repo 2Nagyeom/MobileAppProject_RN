@@ -121,35 +121,33 @@ const ManagerPage = () => {
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback onPress={() => navigation.navigate("매장사장상세페이지")}>
-            <View
-              style={{
-                borderRadius: 60,
-                borderWidth: 1,
-                width: chwidth - 40,
-                marginLeft: 20,
-                marginTop: 10,
-                height: 50,
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: '#6485E6',
-                borderColor: '#6485E6',
-              }}>
+            <View style={{
+              borderRadius: 60,
+              borderWidth: 1,
+              width: chwidth - 40,
+              marginLeft: 20,
+              marginTop: 10,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#6485E6',
+              borderColor: '#6485E6',
+            }}>
               <Text style={{ color: 'black' }}>예약자 확인하기</Text>
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback onPress={() => navigation.navigate("메뉴 삭제 페이지")}>
-            <View style={{ marginTop: 60 }}
-              style={{
-                marginTop: 15,
-                borderRadius: 60,
-                borderWidth: 1,
-                marginLeft: 20,
-                width: chwidth - 40,
-                height: 50,
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderColor: '#6485E6',
-              }}>
+            <View style={{
+              marginTop: 60,
+              borderRadius: 60,
+              borderWidth: 1,
+              marginLeft: 20,
+              width: chwidth - 40,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderColor: '#6485E6',
+            }}>
               <Text style={{ color: 'black' }}>메뉴 불러오기</Text>
             </View>
           </TouchableWithoutFeedback>

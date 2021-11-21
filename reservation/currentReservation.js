@@ -73,9 +73,9 @@ const CurrentReservation = () => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <View style={{ marginTop: 20, flex: 1 }}>
-                <Text style={{ textAlign: 'center', fontSize: 20, }}>매장 테이블 수: {currentTable}개</Text>
-                <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'center', }}>
+            <View style={{ marginTop: 30, flex: 1 }}>
+                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: 'bold', color: '#6485E6' }}>남은 매장 테이블 수</Text>
+                <View style={{ flexDirection: 'row', marginTop: 10, alignItems: 'center', justifyContent: 'center', }}>
                     <TouchableWithoutFeedback onPress={() => {
                         tablePlusMinus('minus')
                     }}>
@@ -107,8 +107,7 @@ const CurrentReservation = () => {
                         backgroundColor: 'white',
                         borderColor: '#6485E6',
                     }}>
-
-                        <Text>{currentTable}</Text>
+                        <Text style={{ fontSize: 40 }}>{currentTable}</Text>
                     </View>
 
 
@@ -136,8 +135,9 @@ const CurrentReservation = () => {
                 </View>
 
 
-                <Text style={{ textAlign: 'center', fontSize: 20, }}>대기 팀 수: {currentWait}개</Text>
-                <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'center', }}>
+                <Text style={{ textAlign: 'center', marginTop: 30, fontSize: 25, fontWeight: 'bold', color: '#6485E6' }}>대기 팀 수</Text>
+                <View style={{ flexDirection: 'row', marginTop: 5, alignItems: 'center', justifyContent: 'center', }}>
+
                     <TouchableWithoutFeedback onPress={() => {
                         waitPlusMinus('minus')
                     }}>
@@ -158,6 +158,7 @@ const CurrentReservation = () => {
                             }}>-</Text>
                         </View>
                     </TouchableWithoutFeedback>
+
                     <View style={{
                         marginLeft: 10,
                         borderRadius: 50,
@@ -170,7 +171,7 @@ const CurrentReservation = () => {
                         borderColor: '#6485E6',
                     }}>
 
-                        <Text>{currentWait}</Text>
+                        <Text style={{ fontSize: 40 }}>{currentWait}</Text>
                     </View>
 
 
@@ -198,16 +199,54 @@ const CurrentReservation = () => {
                 </View>
 
             </View>
+            <TouchableWithoutFeedback onPress={() => {
+                Alert.alert("이대로 수정하시겠습니까?", "",
+                    [
+                        {
+                            text: "확인", onPress: () => {
+                                navigation.navigate("매장사장 메인페이지")
+                            }
+                        },
+                        {
+                            text: "취소",
+                            onPress: () => console.log("Cancel Pressed"),
+                            style: "cancel"
+                        }
 
-            <View style={{
-                borderRadius: 10,
-                backgroundColor: 'yellow',
-                padding: 20,
-                alignItems: 'center',
-                justifyContent: 'center'
+
+                    ])
             }}>
-                <Text>뒤로가기</Text>
-            </View>
+                <View style={{
+                    marginTop: 20,
+                    borderRadius: 60,
+                    borderWidth: 1,
+                    marginLeft: 20,
+                    width: chwidth - 40,
+                    height: 50,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderColor: '#6485E6',
+                    backgroundColor: '#6485E6'
+                }}>
+                    <Text>수정하기</Text>
+                </View>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
+                <View style={{
+                    marginTop: 10,
+                    borderRadius: 60,
+                    borderWidth: 1,
+                    marginLeft: 20,
+                    width: chwidth - 40,
+                    height: 50,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderColor: '#6485E6',
+                    backgroundColor: 'white'
+                }}>
+                    <Text>뒤로가기</Text>
+                </View>
+            </TouchableWithoutFeedback>
 
         </SafeAreaView>
     )
