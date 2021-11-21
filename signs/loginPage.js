@@ -64,8 +64,8 @@ const LoginPage = () => {
             ToastAndroid.show('로그인되었습니다!', ToastAndroid.SHORT);
             navigation.navigate('매장사장 메인페이지');
 
+          }
         }
-
       });
 
 
