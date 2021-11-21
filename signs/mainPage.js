@@ -70,6 +70,19 @@ const mainPage = () => {
         });
     }
 
+    function waitPlusOne(params) {
+        const dataRef = database().ref('/store/' + atStoreNum);
+
+        dataRef.once('value').then((rr) => {
+            var cc = rr.val().wait + 1
+            dataRef.update({ wait: cc }).then(() => {
+                Alert.alert("예약되었습니다!");
+                navigation.navigate('큐얼코드페이지');
+                console.log('함수실행됌');
+            })
+        })
+    }
+
 
     function qrcodereservation(params) {
         database()
@@ -83,12 +96,8 @@ const mainPage = () => {
                 storeName: atStoreName,
             })
             .then(() => {
-                Alert.alert("예약되었습니다!");
-                navigation.navigate('큐얼코드페이지');
-                console.log('함수실행됌');
+                waitPlusOne()
             })
-
-
     }
 
     useEffect(() => {
