@@ -56,13 +56,11 @@ const LoginPage = () => {
           if (snapshot.val().M_num.split('')[0] === 'g') {
             setAtId(id);
             setAtPhone(snapshot.val().phone);
-
             navigation.navigate('메인페이지');
           } else if (snapshot.val().M_num.split('')[0] === 'M') {
             setAtId(id);
             setAtManagernum(snapshot.val().M_num);
             setAtPhone(snapshot.val().phone);
-
             navigation.navigate('매장사장 메인페이지');
 
           }
