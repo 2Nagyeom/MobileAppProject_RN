@@ -10,7 +10,8 @@ import {
     Image,
     TouchableWithoutFeedback,
     TouchableOpacity,
-    Dimensions
+    Dimensions,
+    Alert
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/core';
@@ -51,13 +52,16 @@ const menudeletePage = () => {
                     <View style={{
                         marginTop: 30,
                     }}>
-                        <View style={{
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
-                        }}>
-                            <Text style={{ fontSize: 20 }}>메뉴이름</Text>
-                            <Text style={{ fontSize: 20 }}>5000원</Text>
-                        </View>
+                        <TouchableWithoutFeedback
+                            onPress={() => Alert.alert("메뉴를 수정할까요?")}>
+                            <View style={{
+                                flexDirection: 'row',
+                                justifyContent: 'space-between',
+                            }}>
+                                <Text style={{ fontSize: 20 }}>메뉴이름</Text>
+                                <Text style={{ fontSize: 20 }}>5000원</Text>
+                            </View>
+                        </TouchableWithoutFeedback>
                         <View style={{
                             borderWidth: 1,
                             width: chwidth - 40,
@@ -105,20 +109,23 @@ const menudeletePage = () => {
                 alignItems: 'center',
                 marginTop: 10,
             }}>
-                <View style={{
-                    borderRadius: 60,
-                    borderWidth: 1,
-                    width: chwidth - 40,
-                    height: 50,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    borderColor: '#6485E6',
-                    backgroundColor: '#6485E6',
-                    marginBottom: 10,
+                <TouchableWithoutFeedback
+                    onPress={() => navigation.navigate('메뉴 등록 페이지')}>
+                    <View style={{
+                        borderRadius: 60,
+                        borderWidth: 1,
+                        width: chwidth - 40,
+                        height: 50,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderColor: '#6485E6',
+                        backgroundColor: '#6485E6',
+                        marginBottom: 10,
 
-                }}>
-                    <Text style={{ color: 'black' }}>메뉴 등록하기</Text>
-                </View>
+                    }}>
+                        <Text style={{ color: 'black' }}>메뉴 등록하기</Text>
+                    </View>
+                </TouchableWithoutFeedback>
                 <View style={{
                     borderRadius: 60,
                     borderWidth: 1,
