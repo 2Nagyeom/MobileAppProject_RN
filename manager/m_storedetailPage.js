@@ -15,13 +15,17 @@ import {
 
 import { useNavigation } from '@react-navigation/core';
 import AutoHeightImage from 'react-native-auto-height-image';
+import { atomManagernum } from '../atom/atom';
 
 const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
 
 const m_storedetailPage = () => {
+
     const [id, setID] = useState('');
     const [pwd, setPWD] = useState('');
+
+    const [atManagernum, setAtManagernum] = useRecoilState(atomManagernum)
 
     const navigation = useNavigation();
 

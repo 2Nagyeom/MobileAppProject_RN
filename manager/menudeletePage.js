@@ -10,7 +10,8 @@ import {
     Image,
     TouchableWithoutFeedback,
     TouchableOpacity,
-    Dimensions
+    Dimensions,
+    Alert
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/core';
@@ -51,13 +52,16 @@ const menudeletePage = () => {
                     <View style={{
                         marginTop: 30,
                     }}>
-                        <View style={{
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
-                        }}>
-                            <Text style={{ fontSize: 20 }}>메뉴이름</Text>
-                            <Text style={{ fontSize: 20 }}>5000원</Text>
-                        </View>
+                        <TouchableWithoutFeedback
+                            onPress={() => Alert.alert("메뉴를 수정할까요?")}>
+                            <View style={{
+                                flexDirection: 'row',
+                                justifyContent: 'space-between',
+                            }}>
+                                <Text style={{ fontSize: 20 }}>메뉴이름</Text>
+                                <Text style={{ fontSize: 20 }}>5000원</Text>
+                            </View>
+                        </TouchableWithoutFeedback>
                         <View style={{
                             borderWidth: 1,
                             width: chwidth - 40,

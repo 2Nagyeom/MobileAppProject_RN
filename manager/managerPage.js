@@ -9,11 +9,14 @@ import {
   Image,
   TouchableWithoutFeedback,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  Alert
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/core';
 import AutoHeightImage from 'react-native-auto-height-image';
+import { atomManagernum, atomUserId } from '../atom/atom';
+import { useRecoilState } from 'recoil';
 
 const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
@@ -22,6 +25,14 @@ const chwidth = Dimensions.get('window').width;
 
 const ManagerPage = () => {
 
+  const [currentWait, setCurrentWait] = useState(0)
+  const [currentTable, setCurrentTable] = useState(0)
+
+
+
+  const [atManagernum, setAtManagernum] = useRecoilState(atomManagernum)
+  const [atId, setAtId] = useRecoilState(atomUserId) //유저 아이디
+
   const databasefunction = () => {
     database()
       .ref('/users/' + id)
@@ -29,6 +40,8 @@ const ManagerPage = () => {
       .then((snapshot) => {
         console.log('-------------------로그인정보---------------------');
         console.log(snapshot.val());
+        setAtId(id);
+        setAtManagernum(snapshot.val().M_num);
       });
   };
 
@@ -57,7 +70,7 @@ const ManagerPage = () => {
             fontSize: 40,
             fontWeight: 'bold',
             marginTop: 10,
-          }}>"사장님"</Text>
+          }}>"{atId}" 님</Text>
           <Text style={{
             color: 'black',
             fontSize: 40,
@@ -79,7 +92,19 @@ const ManagerPage = () => {
           backgroundColor: "#F7F7F7",
           borderRadius: 10,
         }}>
-          <TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={() => {
+            // navigation.navigate('실시간 예약 페이지')
+            Alert.alert(
+              `테이블 수 : ${currentTable}개\n대기 팀 수 : ${currentWait}팀\n`,
+              [
+                {
+                  text: "수정하기", onPress: () => {
+                    console.log("수정하기 누름")
+                    navigation.navigate("CurrentReservation")
+                  }
+                }
+              ])
+          }}>
             <View
               style={{
                 borderRadius: 60,

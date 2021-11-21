@@ -55,6 +55,7 @@ const App = () => {
           <Stack.Screen name="메뉴 수정 페이지" component={menurevisePage} />
           <Stack.Screen name="메뉴 삭제 페이지" component={menudeletePage} />
           <Stack.Screen name="예약자 확인 페이지" component={m_storedetailPage} />
+          <Stack.Screen name="현재예약자 확인 페이지" component={CurrentReservation} />
 
 
           {/* <Stack.Screen name="매장둘러보기페이지" component={storelookPage} />
