@@ -20,3 +20,8 @@ export const atomStorenum = atom({
     default: '',
 });
 
+export const atomManagernum = atom({
+    key: 'atomManagernum',
+    default: '',
+});
+

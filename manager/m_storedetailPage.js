@@ -19,7 +19,7 @@ import AutoHeightImage from 'react-native-auto-height-image';
 const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
 
-const bookerPage = () => {
+const m_storedetailPage = () => {
     const [id, setID] = useState('');
     const [pwd, setPWD] = useState('');
 
@@ -29,19 +29,34 @@ const bookerPage = () => {
 
         <SafeAreaView style={{ height: '100%', width: '100%', backgroundColor: '#F7F7F7' }}>
 
-            <View style={{ marginLeft: 20, marginBottom: 30 }}>
-
+            <View>
+                <View style={{
+                    marginTop: 10,
+                    marginBottom: 50,
+                    alignItems: 'center'
+                }}>
+                    <View>
+                        <AutoHeightImage
+                            width={150}
+                            source={Logo}
+                        />
+                    </View>
+                </View>
                 <View
                     style={{
-                        width: chwidth - 40,
+                        width: chwidth - 70,
                         marginLeft: 20,
-                        marginTop: 200,
-                        color: 'black',
-
-                    }} />
-                <Text style={{ fontSize: 20 }}>당일예약자</Text>
+                        marginTop: 10,
+                        alignItems: 'center',
+                    }}>
+                    <Text style={{
+                        color: '#6485E6',
+                        fontSize: 20,
+                    }}>당일예약자가 있으니 확인해주세요!</Text>
+                </View>
                 <View style={{
                     borderWidth: 1,
+                    marginLeft: 20,
                     width: chwidth - 40,
                     height: 0,
                     borderColor: '#6485E6',
@@ -71,12 +86,10 @@ const bookerPage = () => {
                         marginLeft: 20,
                         marginTop: 200,
                         alignItems: 'center',
-
-
                     }}>
                     <Text style={{
                         color: '#6485E6',
-                        fontSize: 24,
+                        fontSize: 20,
                     }}>다른 날에 예약한 사람이 있어요!</Text>
                 </View>
                 <View style={{
@@ -84,6 +97,7 @@ const bookerPage = () => {
                     width: chwidth - 40,
                     height: 0,
                     borderColor: '#6485E6',
+                    marginLeft: 20,
 
                 }}>
                     <View
@@ -102,22 +116,25 @@ const bookerPage = () => {
                     </View>
                 </View>
 
-                <View style={{ marginTop: 20 }}
-                    style={{
-                        marginTop: 150,
-                        borderRadius: 60,
-                        borderWidth: 1,
-                        width: chwidth - 40,
-                        height: 50,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        borderColor: '#6485E6',
-                    }}>
-                    <Text style={{ color: 'black' }}>뒤로가기</Text>
-                </View>
+                <TouchableWithoutFeedback onPress={() => navigation.navigate("매장사장 메인페이지")}>
+                    <View style={{ marginTop: 20 }}
+                        style={{
+                            marginLeft: 20,
+                            marginTop: 200,
+                            borderRadius: 60,
+                            borderWidth: 1,
+                            width: chwidth - 40,
+                            height: 50,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            borderColor: '#6485E6',
+                        }}>
+                        <Text style={{ color: 'black' }}>뒤로가기</Text>
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
         </SafeAreaView >
     );
 };
 
-export default bookerPage;
+export default m_storedetailPage;
