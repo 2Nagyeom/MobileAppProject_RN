@@ -89,7 +89,7 @@ const LoginPage = () => {
                 source={Logo}
               />
             </View>
-            <View style={{ marginTop: 0 }}>
+            <View style={{ marginTop: 20 }}>
               <View
                 style={{
                   marginTop: 0,

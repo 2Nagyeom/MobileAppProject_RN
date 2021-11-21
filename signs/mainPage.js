@@ -29,12 +29,16 @@ import { atomStoreName, atomStorenum, atomUserId, atomUserPhone } from '../atom/
 import Drawer from 'react-native-drawer';
 
 const Logo = require('../img/logo.png');
+const logout = require('../img/logout.png');
+const finish = require('../img/finish.png');
+
 const chwidth = Dimensions.get('window').width;
 
 const call = require('../img/call.png');
 const message = require('../img/message.png');
 const gps = require('../img/gps.png');
 const clock = require('../img/clock.png');
+const menu = require('../img/menu.png');
 
 const mainPage = () => {
     const navigation = useNavigation()
@@ -203,9 +207,22 @@ const mainPage = () => {
 
                     {/* 왼쪽 위 버튼! */}
                     <TouchableWithoutFeedback onPress={() => { openControlPanel() }}>
-                        <View style={{ position: 'absolute', width: 50, height: 50, backgroundColor: 'white', borderRadius: 10, marginLeft: 10, marginTop: 10 }}>
+                        <SafeAreaView style={{
+                            position: 'absolute',
+                            marginTop: 45,
+                            width: 50,
+                            height: 50,
+                            borderRadius: 5,
+                            backgroundColor: 'white',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                            <AutoHeightImage
+                                width={40}
+                                source={menu}
+                            />
 
-                        </View>
+                        </SafeAreaView>
                     </TouchableWithoutFeedback>
                     {/* 왼쪽 위 버튼 끝! */}
 
@@ -391,15 +408,39 @@ const mainPage = () => {
 };
 
 const ControlPanel = () => {
+    const [atId, setAtId] = useRecoilState(atomUserId) //유저 아이디
+
     const navigation = useNavigation()
     return (
-        <SafeAreaView style={{}}>
+        <SafeAreaView style={{ backgroundColor: '#6485E6', flex: 1 }}>
+            <View style={{
+                marginBottom: 40,
+                marginLeft: 10
+            }}>
+                <Text style={{ fontSize: 30, fontWeight: 'bold' }}>{atId} 님</Text>
+            </View>
             <TouchableWithoutFeedback onPress={() => { navigation.goBack() }}>
-                <Text style={{ margin: 10 }}>로그아웃</Text>
+                <View style={{ flexDirection: 'row' }}>
+                    <View style={{ marginLeft: 30, justifyContent: 'center' }}>
+                        <AutoHeightImage
+                            width={20}
+                            source={logout}
+                        />
+                    </View>
+                    <Text style={{ fontSize: 20, margin: 10 }}>로그아웃</Text>
+                </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => { navigation.navigate('큐얼코드페이지') }}>
-                <Text style={{ margin: 10 }}>예약 확인</Text>
+                <View style={{ flexDirection: 'row' }}>
+                    <View style={{ marginLeft: 30, justifyContent: 'center' }}>
+                        <AutoHeightImage
+                            width={20}
+                            source={finish}
+                        />
+                    </View>
+                    <Text style={{ fontSize: 20, margin: 10 }}>예약확인</Text>
+                </View>
             </TouchableWithoutFeedback>
         </SafeAreaView>
     )
