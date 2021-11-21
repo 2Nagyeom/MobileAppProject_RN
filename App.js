@@ -14,7 +14,7 @@ import ManagerPage from './manager/managerPage';
 import menuenrollmentPage from './manager/menuenrollmentPage';
 import menurevisePage from './manager/menurevisePage';
 import menudeletePage from './manager/menudeletePage';
-import storeregisterPage from './signs/storeregisterPage';
+import storeregisterPage from './reservation/storeregisterPage';
 import mainPage from './signs/mainPage';
 import M_storedetailPage from './manager/m_storedetailPage';
 import test from './signs/test';
@@ -42,12 +42,13 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
 
+
           <Stack.Screen name="로그인 페이지" component={LoginPage} />
           <Stack.Screen name="회원가입 페이지" component={RegisterPage} />
           <Stack.Screen name="메인페이지" component={mainPage} />
           <Stack.Screen name="예약페이지" component={storeregisterPage} />
-          <Stack.Screen name="큐얼코드페이지" component={qrcodePage} />
 
+          <Stack.Screen name="큐얼코드페이지" component={qrcodePage} />
 
 
           <Stack.Screen name="매장사장 메인페이지" component={ManagerPage} />

@@ -91,18 +91,33 @@ const qrcodePage = () => {
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
             <View>
-                <Text>입장 확인</Text>
-                <Text>{storeName}</Text>
-                <Text>{(storeDay == 'now' ? '오늘' : storeDay)}</Text>
-                <Text>{(storeTime == 'now' ? '현재 입장 가능' : storeTime)}</Text>
+                <Text style={{
+                    marginBottom: 10,
+                    fontSize: 40,
+                    fontWeight: 'bold',
+                    color: 'black'
+                }} >입장 확인</Text>
+            </View>
+            <View style={{
+                marginRight: 15,
+                borderRadius: 40,
+                borderWidth: 8,
+                width: chwidth - 70,
+                marginLeft: 20,
+                marginBottom: 20,
+                height: 140,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'white',
+                borderColor: '#6485E6',
+            }}>
+                <Text style={{ fontSize: 25, marginBottom: 5 }}>{storeName}</Text>
+                <Text style={{ fontSize: 25, marginBottom: 5, color: 'red' }}>{(storeDay == 'now' ? '오늘' : storeDay)}</Text>
+                <Text style={{ fontSize: 25, color: 'red' }}>{(storeTime == 'now' ? '현재 입장 가능' : storeTime)}</Text>
             </View>
 
-            <View style={{ marginBottom: 20, }}>
-                <Text style={{
-                    fontSize: 30,
-                    fontWeight: 'bold',
-                    color: '#6485E6'
-                }}>입장 QR코드 입니다!</Text>
+            <View style={{ marginBottom: 10, }}>
+
                 {/* <Text>{userQrCode}</Text> */}
             </View>
             <View>
@@ -118,7 +133,19 @@ const qrcodePage = () => {
                     backgroundColor: '#6485E6',
                     borderColor: '#6485E6',
                 }}>
-                    <Image source={{ uri: userQrCode }} style={{ backgroundColor: 'white', width: 200, height: 200 }} />
+                    <Text style={{
+                        marginBottom: 10,
+                        fontSize: 20,
+                        fontWeight: 'bold',
+                        color: 'white'
+                    }}>입장 QR코드</Text>
+                    <Image source={{ uri: userQrCode }}
+                        style={{
+                            backgroundColor: 'white',
+                            width: 200,
+                            height: 200,
+                            marginBottom: 10,
+                        }} />
                 </View>
             </View>
 
