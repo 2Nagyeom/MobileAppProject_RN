@@ -25,7 +25,7 @@ import { useNavigation } from '@react-navigation/core';
 import AutoHeightImage from 'react-native-auto-height-image';
 import { BottomSheetModal, BottomSheetModalProvider, BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { noWait, useRecoilState } from 'recoil';
-import { atomStoreName, atomStorenum, atomUserId } from '../atom/atom';
+import { atomStoreName, atomStorenum, atomUserId, atomUserPhone } from '../atom/atom';
 
 const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
@@ -77,7 +77,7 @@ const mainPage = () => {
                 id: atId,
                 time: 'now',
                 day: 'now',
-                num: 'test',
+                phone: atPhone,
                 M_num: atStoreName,
             })
             .then(() => {
@@ -100,6 +100,8 @@ const mainPage = () => {
     const [currentTable, setCurrentTable] = useState(0)
 
     const [atId, setAtId] = useRecoilState(atomUserId) //유저 아이디
+    const [atPhone, setAtPhone] = useRecoilState(atomUserPhone)//유저번호
+
     const [atStoreNum, setAtStoreNum] = useRecoilState(atomStorenum) //마커 선택한 스토어 번호
     const [atStoreName, setAtStoreName] = useRecoilState(atomStoreName) //마커 선택한 스토어 이름
 

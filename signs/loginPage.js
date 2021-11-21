@@ -18,7 +18,7 @@ import {
 import { useNavigation } from '@react-navigation/core';
 import AutoHeightImage from 'react-native-auto-height-image';
 import { useRecoilState } from 'recoil';
-import { atomUserId } from '../atom/atom';
+import { atomUserId, atomUserPhone } from '../atom/atom';
 
 const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
@@ -30,6 +30,8 @@ const LoginPage = () => {
   const [pwd, setPWD] = useState('');
 
   const [atId, setAtId] = useRecoilState(atomUserId)
+  const [atPhone, setAtPhone] = useRecoilState(atomUserPhone)
+
 
   const databasefunction = () => {
     database()
@@ -48,15 +50,18 @@ const LoginPage = () => {
               { text: "확인", onPress: () => console.log("OK Pressed") }
             ]
           );
-        } else if (pwd == snapshot.val().pwd)
+        } else if (pwd == snapshot.val().pwd) {
           console.log(snapshot.val().M_num + '로그인함');
 
-        if (snapshot.val().M_num.split('')[0] === 'g') {
-          // Alert.alert('손님')
-          setAtId(id)
-          ToastAndroid.show('로그인되었습니다!', ToastAndroid.SHORT);
-          navigation.navigate('메인페이지')
-        } else {
+          if (snapshot.val().M_num.split('')[0] === 'g') {
+            // Alert.alert('손님')
+            setAtId(id)
+            setAtPhone(snapshot.val().phone)
+            ToastAndroid.show('로그인되었습니다!', ToastAndroid.SHORT);
+            navigation.navigate('메인페이지')
+          } else {
+
+          }
 
         }
 
