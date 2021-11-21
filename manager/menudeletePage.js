@@ -126,18 +126,21 @@ const menudeletePage = () => {
                         <Text style={{ color: 'black' }}>메뉴 등록하기</Text>
                     </View>
                 </TouchableWithoutFeedback>
-                <View style={{
-                    borderRadius: 60,
-                    borderWidth: 1,
-                    width: chwidth - 40,
-                    height: 50,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    borderColor: '#6485E6',
-                    marginBottom: 10,
-                }}>
-                    <Text style={{ color: 'black' }}>뒤로가기</Text>
-                </View>
+                <TouchableWithoutFeedback
+                    onPress={() => navigation.navigate('매장사장 메인페이지')}>
+                    <View style={{
+                        borderRadius: 60,
+                        borderWidth: 1,
+                        width: chwidth - 40,
+                        height: 50,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderColor: '#6485E6',
+                        marginBottom: 10,
+                    }}>
+                        <Text style={{ color: 'black' }}>뒤로가기</Text>
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
         </SafeAreaView >
     );

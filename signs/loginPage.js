@@ -11,7 +11,8 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   Dimensions,
-  Alert
+  Alert,
+
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/core';

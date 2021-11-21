@@ -105,19 +105,21 @@ const menuenrollmentPage = () => {
                     <Text style={{ color: 'black' }}>등록하기</Text>
                 </View>
 
-                <View style={{ marginTop: 60 }}
-                    style={{
-                        marginTop: 15,
-                        borderRadius: 60,
-                        borderWidth: 1,
-                        width: chwidth - 40,
-                        height: 50,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        borderColor: '#6485E6',
-                    }}>
-                    <Text style={{ color: 'black' }}>뒤로가기</Text>
-                </View>
+                <TouchableWithoutFeedback onPress={() => navigation.navigate("메뉴 삭제 페이지")}>
+                    <View style={{ marginTop: 60 }}
+                        style={{
+                            marginTop: 15,
+                            borderRadius: 60,
+                            borderWidth: 1,
+                            width: chwidth - 40,
+                            height: 50,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            borderColor: '#6485E6',
+                        }}>
+                        <Text style={{ color: 'black' }}>뒤로가기</Text>
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
         </SafeAreaView>
     );
