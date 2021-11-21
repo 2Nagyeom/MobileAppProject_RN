@@ -116,7 +116,7 @@ const storeregisterPage = () => {
 
             <View style={{
                 marginTop: 40,
-                paddingBottom: '10%',
+                marginBottom: 10,
                 backgroundColor: 'white',
             }}>
                 <Calendar
@@ -142,7 +142,7 @@ const storeregisterPage = () => {
             </View>
             <View style={{
                 alignItems: 'center',
-                marginBottom: 30,
+                marginBottom: 20,
             }}>
                 <DatePicker mode="time" date={time} onDateChange={(time) => {
                     setTime(time)
@@ -164,6 +164,23 @@ const storeregisterPage = () => {
                         borderColor: '#6485E6',
                     }}>
                     <Text style={{ color: 'white' }}>예약하기</Text>
+                </View>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => { navigation.navigate("메인페이지") }}>
+                <View
+                    style={{
+                        marginLeft: 20,
+                        marginTop: 10,
+                        borderRadius: 60,
+                        borderWidth: 1,
+                        width: chwidth - 40,
+                        height: 50,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: 'white',
+                        borderColor: '#6485E6',
+                    }}>
+                    <Text>뒤로가기</Text>
                 </View>
             </TouchableWithoutFeedback>
 
