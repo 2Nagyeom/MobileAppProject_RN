@@ -1,6 +1,5 @@
 
-import React from 'react';
-import QRCode from 'react-native-qrcode-svg';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     SafeAreaView,
     ScrollView,
@@ -17,6 +16,12 @@ import {
 
 import { useNavigation } from '@react-navigation/core';
 
+import database from '@react-native-firebase/database';
+import { useRecoilState } from 'recoil';
+import { atomUserId } from '../atom/atom';
+
+import RNQRGenerator from 'rn-qr-generator';
+import AutoHeightImage from 'react-native-auto-height-image';
 
 
 const qrcodePage = () => {
@@ -25,29 +30,58 @@ const qrcodePage = () => {
 
     const [atId, setAtId] = useRecoilState(atomUserId) //유저 아이디
 
+    const [userQrCode, setUserQrCode] = useState('')
+
+    function QrLoad(params) {
+        database()
+            .ref(`/users/${atId}`)
+            .once('value').then((res) => {
+                if (res.val().qrcode == null) {
+                    Alert.alert('예약정보가 없습니다!')
+                    navigation.navigate('메인페이지')
+                } else {
+                    // setUserQrCode(res.val().qrcode)
+                    QRGenerate(res.val().qrcode)
+                }
+            })
+    }
+
+    function QRGenerate(param = '') {
+        RNQRGenerator.generate({
+            value: param,
+            height: 200,
+            width: 200,
+            base64: true
+        })
+            .then(response => {
+                console.log(response)
+                const { uri, width, height, base64 } = response;
+                setUserQrCode('data:image/png;base64,' + base64);
+            })
+            .catch(error => console.log('Cannot create QR code', error));
+    }
+
+
+
+
+    useEffect(() => {
+        QrLoad()
+    }, [])
+
 
 
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-            <View style={{
-                marginBottom: 10,
-            }}>
-                <Text style={{
-                    fontSize: 20,
-                }}>
-                    입장 QR코드 입니다!
-                </Text>
+            <View style={{ marginBottom: 10, }}>
+                <Text style={{ fontSize: 20, }}>입장 QR코드 입니다!</Text>
+                {/* <Text>{userQrCode}</Text> */}
             </View>
-            <QRCode value="atId" />
+            <Image source={{ uri: userQrCode }} style={{ backgroundColor: 'white', width: 200, height: 200 }} />
             <TouchableWithoutFeedback onPress={() => {
                 navigation.navigate('메인페이지');
             }}>
-                <View style={{
-                    marginTop: 40,
-                }}>
-                    <Text style={{ fontSize: 15 }}>
-                        뒤로가기
-                    </Text>
+                <View style={{ marginTop: 40, }}>
+                    <Text style={{ fontSize: 15 }}>뒤로가기</Text>
                 </View>
             </TouchableWithoutFeedback>
         </View>
