@@ -1,4 +1,6 @@
   const [atId, setAtId] = useRecoilState(atomUserId) //유저 아이디
+  const [atPhone, setAtPhone] = useRecoilState(atomUserPhone) //유저 번호
+
 
     const [atStoreNum, setAtStoreNum] = useRecoilState(atomStorenum) //마커 선택한 스토어 번호
     const [atStoreName, setAtStoreName] = useRecoilState(atomStoreName) //마커 선택한 스토어 이름
