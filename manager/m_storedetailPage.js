@@ -16,6 +16,7 @@ import {
 import { useNavigation } from '@react-navigation/core';
 import AutoHeightImage from 'react-native-auto-height-image';
 import { atomManagernum } from '../atom/atom';
+import { useRecoilState } from 'recoil';
 
 const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
