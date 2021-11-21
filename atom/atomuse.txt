@@ -5,4 +5,7 @@
     const [atStoreNum, setAtStoreNum] = useRecoilState(atomStorenum) //마커 선택한 스토어 번호
     const [atStoreName, setAtStoreName] = useRecoilState(atomStoreName) //마커 선택한 스토어 이름
 
+  const [atManagernum, setAtManagernum] = useRecoilState(atomManagernum) //매니저 로그인할때 M_num 저장할 변수
+
+
     테스트
