@@ -79,7 +79,8 @@ const mainPage = () => {
                 time: 'now',
                 day: 'now',
                 phone: atPhone,
-                M_num: atStoreName,
+                M_num: atStoreNum,
+                storeName: atStoreName,
             })
             .then(() => {
                 Alert.alert("예약되었습니다!");
