@@ -55,13 +55,11 @@ const LoginPage = () => {
           if (snapshot.val().M_num.split('')[0] === 'g') {
             setAtId(id);
             setAtPhone(snapshot.val().phone);
-            ToastAndroid.show('로그인되었습니다!', ToastAndroid.SHORT);
             navigation.navigate('메인페이지');
           } else if (snapshot.val().M_num.split('')[0] === 'M') {
             setAtId(id);
             setAtManagernum(snapshot.val().M_num);
             setAtPhone(snapshot.val().phone);
-            ToastAndroid.show('로그인되었습니다!', ToastAndroid.SHORT);
             navigation.navigate('매장사장 메인페이지');
 
           }

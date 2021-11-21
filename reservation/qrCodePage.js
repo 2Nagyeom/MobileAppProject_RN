@@ -30,6 +30,10 @@ const qrcodePage = () => {
 
     const [atId, setAtId] = useRecoilState(atomUserId) //유저 아이디
 
+    const [storeName, setStoreName] = useState('')
+    const [storeDay, setStoreDay] = useState('')
+    const [storeTime, setStoreTime] = useState('')
+
     const [userQrCode, setUserQrCode] = useState('')
 
     function QrLoad(params) {
@@ -42,7 +46,18 @@ const qrcodePage = () => {
                 } else {
                     // setUserQrCode(res.val().qrcode)
                     QRGenerate(res.val().qrcode)
+                    reservLoad(res.val().qrcode.split('/')[0])
                 }
+            })
+    }
+
+    function reservLoad(storenum) {
+        database()
+            .ref(`/reserve/${storenum}/${atId}`)
+            .once('value').then((res) => {
+                setStoreName(res.val().storeName)
+                setStoreTime(res.val().time)
+                setStoreDay(res.val().day)
             })
     }
 
@@ -72,6 +87,14 @@ const qrcodePage = () => {
 
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+
+            <View>
+                <Text>입장 확인</Text>
+                <Text>{storeName}</Text>
+                <Text>{storeDay}</Text>
+                <Text>{storeTime}</Text>
+            </View>
+
             <View style={{ marginBottom: 10, }}>
                 <Text style={{ fontSize: 20, }}>입장 QR코드 입니다!</Text>
                 {/* <Text>{userQrCode}</Text> */}
