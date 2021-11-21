@@ -20,7 +20,7 @@ import database from '@react-native-firebase/database';
 import DatePicker from 'react-native-date-picker'
 import { noWait, useRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/core';
-import { atomStorenum, atomUserId, atomUserPhone } from '../atom/atom';
+import { atomStoreName, atomStorenum, atomUserId, atomUserPhone } from '../atom/atom';
 
 LocaleConfig.locales['fr'] = {
     monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
@@ -31,7 +31,6 @@ LocaleConfig.locales['fr'] = {
 };
 LocaleConfig.defaultLocale = 'fr';
 
-// const [atStoreName, setAtStoreName] = useRecoilState(atomStoreName) //마커 선택한 스토어 이름
 
 
 const storeregisterPage = () => {
@@ -54,6 +53,7 @@ const storeregisterPage = () => {
                             day: date,
                             time: timeString,
                             M_num: atStoreNum,
+                            storeName: atStoreName,
                             phone: atPhone,
                         })
                         .then(() => {
@@ -90,6 +90,7 @@ const storeregisterPage = () => {
 
     const [atId, setAtId] = useRecoilState(atomUserId) //유저 아이디
     const [atStoreNum, setAtStoreNum] = useRecoilState(atomStorenum) //마커 선택한 스토어 번호
+    const [atStoreName, setAtStoreName] = useRecoilState(atomStoreName) //마커 선택한 스토어 이름
     const [atPhone, setAtPhone] = useRecoilState(atomUserPhone) //유저 번호
 
     const [date, setDate] = useState('')
