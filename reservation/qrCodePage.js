@@ -23,6 +23,10 @@ const qrcodePage = () => {
 
     const navigation = useNavigation();
 
+    const [atId, setAtId] = useRecoilState(atomUserId) //유저 아이디
+
+
+
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
             <View style={{
@@ -34,7 +38,7 @@ const qrcodePage = () => {
                     입장 QR코드 입니다!
                 </Text>
             </View>
-            <QRCode value="test/now/now/01012341234" />
+            <QRCode value="atId" />
             <TouchableWithoutFeedback onPress={() => {
                 navigation.navigate('메인페이지');
             }}>

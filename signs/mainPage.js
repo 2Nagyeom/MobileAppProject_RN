@@ -77,7 +77,7 @@ const mainPage = () => {
                 id: atId,
                 time: 'now',
                 day: 'now',
-                phone: 'test',
+                num: 'test',
                 M_num: atStoreName,
             })
             .then(() => {
