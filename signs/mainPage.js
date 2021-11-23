@@ -414,12 +414,14 @@ const ControlPanel = () => {
 
     const navigation = useNavigation()
     return (
-        <SafeAreaView style={{ backgroundColor: '#6485E6', flex: 1 }}>
+        <SafeAreaView style={{ flex: 1 }}>
             <View style={{
-                marginBottom: 40,
-                marginLeft: 10
+                marginBottom: 10,
+                borderWidth: 0.5,
+                backgroundColor: '#6485E6'
             }}>
-                <Text style={{ fontSize: 30, fontWeight: 'bold' }}>{atId} 님</Text>
+                <Text style={{ marginLeft: 10, fontSize: 30, fontWeight: 'bold', marginTop: 20, marginBottom: 20 }}>{atId} 님</Text>
+
             </View>
             <TouchableWithoutFeedback onPress={() => { navigation.goBack() }}>
                 <View style={{ flexDirection: 'row' }}>
