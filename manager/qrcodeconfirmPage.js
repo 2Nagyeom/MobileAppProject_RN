@@ -91,7 +91,7 @@ const qrcodeconfirmPage = () => {
                 }}>
 
 
-                    <TouchableWithoutFeedback onPress={() => navigation.navigate("메뉴 삭제 페이지")}>
+                    <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
                         <View style={{
                             marginTop: 60,
                             borderRadius: 60,
@@ -103,7 +103,7 @@ const qrcodeconfirmPage = () => {
                             justifyContent: 'center',
                             borderColor: '#6485E6',
                         }}>
-                            <Text style={{ color: 'black' }}>메뉴 불러오기</Text>
+                            <Text style={{ color: 'black' }}>뒤로가기</Text>
                         </View>
                     </TouchableWithoutFeedback>
                 </View>
