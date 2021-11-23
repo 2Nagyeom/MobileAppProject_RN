@@ -21,6 +21,7 @@ import { atomManagernum, atomUserId } from '../atom/atom';
 import { useRecoilState } from 'recoil';
 
 const Logo = require('../img/logo.png');
+const qrimg = require('../img/qrcode.png');
 const chwidth = Dimensions.get('window').width;
 
 
@@ -61,6 +62,19 @@ const ManagerPage = () => {
         justifyContent: 'center',
         backgroundColor: "#F7F7F7"
       }}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('큐얼코드 확인 페이지')}>
+          <View style={{
+            height: '5%',
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}>
+            <AutoHeightImage
+              width={40}
+              source={qrimg}
+            />
+            <Text style={{ fontWeight: 'bold', fontSize: 20, textAlign: 'right', color: '#6485E6' }}> QR코드 불러오기 </Text>
+          </View>
+        </TouchableWithoutFeedback>
         <View style={{
           alignItems: 'center',
           flex: 1,
