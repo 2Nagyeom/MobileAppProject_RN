@@ -72,7 +72,7 @@ const qrcodeconfirmPage = () => {
 
                 <View style={{ alignItems: 'center', flex: 1, marginBottom: 20 }}>
                     <View style={{
-                        flex: 1,
+
                         width: '70%',
                         height: '70%',
                         borderWidth: 10,
@@ -89,8 +89,6 @@ const qrcodeconfirmPage = () => {
                     backgroundColor: "#F7F7F7",
                     borderRadius: 10,
                 }}>
-
-
                     <TouchableWithoutFeedback onPress={() => navigation.navigate("메뉴 삭제 페이지")}>
                         <View style={{
                             marginTop: 60,
