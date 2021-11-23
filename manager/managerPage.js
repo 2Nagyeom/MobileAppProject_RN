@@ -67,6 +67,7 @@ const ManagerPage = () => {
             height: '5%',
             flexDirection: 'row',
             alignItems: 'center',
+            justifyContent: 'flex-end'
           }}>
             <AutoHeightImage
               width={40}
