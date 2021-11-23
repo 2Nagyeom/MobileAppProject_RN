@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     SafeAreaView,
     ScrollView,
@@ -13,6 +13,9 @@ import {
     Dimensions,
     Alert
 } from 'react-native';
+
+import database from '@react-native-firebase/database';
+
 
 import { useNavigation } from '@react-navigation/core';
 import AutoHeightImage from 'react-native-auto-height-image';
@@ -29,10 +32,29 @@ const m_storedetailPage = () => {
 
     const [atManagernum, setAtManagernum] = useRecoilState(atomManagernum)
 
+    const [currentReservArray, setCurrentReservArray] = useState([])
+
     const navigation = useNavigation();
 
-    return (
+    function reservLoad(params) {
+        database().ref('/reserve/' + atManagernum).on('value', (res) => {
+            console.log(res.val())
+            // console.log(Object.keys(res.val()).length)
+            // console.log(Object.values(res.val())[0])
+            setCurrentReservArray([])
 
+            for (var i = 0; i < Object.keys(res.val()).length; i++) {
+                // console.log()
+                setCurrentReservArray((rr) => [...rr, Object.values(res.val())[i]])
+            }
+        })
+    }
+
+    useEffect(() => {
+        reservLoad()
+    }, [])
+
+    return (
         <SafeAreaView style={{ height: '100%', width: '100%', backgroundColor: '#F7F7F7' }}>
             <View style={{
                 marginTop: 10,
@@ -67,10 +89,17 @@ const m_storedetailPage = () => {
             <View style={{ flex: 1, marginBottom: 10 }}>
                 <ScrollView style={{ flex: 1 }}>
 
+                    {/* 실시간 예약 있을 시 출력! */}
+                    {
+                        currentReservArray.map((valuse, index) => {
+                            console.log('??????');
+                            console.log(valuse)
+                            return (
+                                <ScrollViewItem key={index} id={valuse.id} date={valuse.day} time={valuse.time}></ScrollViewItem>
+                            )
+                        })
+                    }
 
-                    <ScrollViewItem></ScrollViewItem>
-                    <ScrollViewItem></ScrollViewItem>
-                    <ScrollViewItem></ScrollViewItem>
 
                 </ScrollView>
             </View>
@@ -123,16 +152,21 @@ const m_storedetailPage = () => {
     );
 };
 
-const ScrollViewItem = () => {
+const ScrollViewItem = (prop) => {
+    // console.log(prop)
     return (
         <View>
             <View style={{ width: chwidth - 60, marginLeft: 30, marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <Text>아이디</Text>
-                <Text>날짜/시간</Text>
+                <Text>{prop.id}</Text>
+                <Text>{prop.date == 'now' ? '오늘' : prop.date}/{prop.time == 'now' ? '실시간' : prop.time}</Text>
 
-                <View style={{ borderRadius: 10, width: 50, height: 40, backgroundColor: '#6485E6', alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontWeight: 'bold' }}>삭제</Text>
-                </View>
+                <TouchableWithoutFeedback onPress={() => {
+
+                }}>
+                    <View style={{ borderRadius: 10, width: 50, height: 40, backgroundColor: '#6485E6', alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontWeight: 'bold' }}>삭제</Text>
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
             <View style={{ width: chwidth - 60, borderWidth: 0.5, marginLeft: 30, marginTop: 5 }}></View>
         </View>

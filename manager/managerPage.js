@@ -13,6 +13,8 @@ import {
   Alert
 } from 'react-native';
 
+import database from '@react-native-firebase/database';
+
 import { useNavigation } from '@react-navigation/core';
 import AutoHeightImage from 'react-native-auto-height-image';
 import { atomManagernum, atomUserId } from '../atom/atom';
