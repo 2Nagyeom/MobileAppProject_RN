@@ -49,7 +49,8 @@ const RegisterPage = () => {
             .then(() => {
               console.log('----------------데이터 삽입성공-------------------')
               console.log(id);
-
+              Alert.alert('회원가입을 성공하셨습니다.')
+              navigation.navigate('로그인 페이지')
             });
         } else {
           Alert.alert("동일아이디가 존재합니다!");
@@ -67,117 +68,123 @@ const RegisterPage = () => {
   return (
 
     <SafeAreaView style={{ height: '100%', width: '100%', backgroundColor: '#F7F7F7' }}>
-      <ScrollView>
+      <View style={{ alignItems: 'center', marginTop: 10 }}>
+        <AutoHeightImage
+          width={150}
+          source={Logo}
+        />
+      </View>
+      <ScrollView style={{}}>
         <View
           style={{
             width: chwidth - 40,
             marginLeft: 20,
-            marginTop: 45,
+            marginTop: 20,
           }}>
           <View style={{ alignItems: 'center' }}>
-            <View>
-              <AutoHeightImage
-                width={150}
-                source={Logo}
+            <View
+              style={{
+                marginTop: 40,
+                borderRadius: 60,
+                borderWidth: 1,
+                width: chwidth - 40,
+                height: 50,
+                borderColor: '#6485E6',
+                justifyContent: 'center',
+              }}>
+              <TextInput onChangeText={(id) => { setID(id) }}
+                style={{ width: chwidth - 50, marginLeft: 10 }}
+                placeholder={'ID'}
               />
             </View>
-            <View style={{ marginTop: 35 }}>
-              <View
-                style={{
-                  marginTop: 40,
-                  borderRadius: 60,
-                  borderWidth: 1,
-                  width: chwidth - 40,
-                  height: 50,
-                  borderColor: '#6485E6',
-                  justifyContent: 'center',
-                }}>
-                <TextInput onChangeText={(id) => { setID(id) }}
-                  style={{ width: chwidth - 50, marginLeft: 10 }}
-                  placeholder={'ID'}
-                />
-              </View>
-              <View style={{ marginTop: 60 }}
-                style={{
-                  marginTop: 15,
-                  borderRadius: 60,
-                  borderWidth: 1,
-                  width: chwidth - 40,
-                  height: 50,
-                  borderColor: '#6485E6',
-                  justifyContent: 'center',
-                }}>
-                <TextInput onChangeText={(pwd) => { setPWD(pwd) }}
-                  style={{ width: chwidth - 50, marginLeft: 10 }}
-                  placeholder={'PWD'}
-                />
-              </View>
-              <View style={{ marginTop: 60 }}
-                style={{
-                  marginTop: 15,
-                  borderRadius: 60,
-                  borderWidth: 1,
-                  width: chwidth - 40,
-                  height: 50,
-                  justifyContent: 'center',
-                  borderColor: '#6485E6',
-                }}>
-                <TextInput onChangeText={(pwd_check) => { setPWD_CHECK(pwd_check) }}
-                  style={{ width: chwidth - 50, marginLeft: 10 }}
-                  placeholder={'PWD_CHECK'}
-                />
-              </View>
-              <View style={{ marginTop: 60 }}
-                style={{
-                  marginTop: 15,
-                  borderRadius: 60,
-                  borderWidth: 1,
-                  width: chwidth - 40,
-                  height: 50,
-                  justifyContent: 'center',
-                  borderColor: '#6485E6',
-                }}>
-                <TextInput onChangeText={(num) => { setNUM(num) }}
-                  style={{ width: chwidth - 50, marginLeft: 10 }}
-                  placeholder={'NUM'}
-                />
-              </View>
+            <View style={{ marginTop: 60 }}
+              style={{
+                marginTop: 15,
+                borderRadius: 60,
+                borderWidth: 1,
+                width: chwidth - 40,
+                height: 50,
+                borderColor: '#6485E6',
+                justifyContent: 'center',
+              }}>
+              <TextInput onChangeText={(pwd) => { setPWD(pwd) }}
+                style={{ width: chwidth - 50, marginLeft: 10 }}
+                placeholder={'PWD'}
+              />
+            </View>
+            <View style={{ marginTop: 60 }}
+              style={{
+                marginTop: 15,
+                borderRadius: 60,
+                borderWidth: 1,
+                width: chwidth - 40,
+                height: 50,
+                justifyContent: 'center',
+                borderColor: '#6485E6',
+              }}>
+              <TextInput onChangeText={(pwd_check) => { setPWD_CHECK(pwd_check) }}
+                style={{ width: chwidth - 50, marginLeft: 10 }}
+                placeholder={'PWD_CHECK'}
+              />
+            </View>
+            <View style={{ marginTop: 60 }}
+              style={{
+                marginTop: 15,
+                borderRadius: 60,
+                borderWidth: 1,
+                width: chwidth - 40,
+                height: 50,
+                justifyContent: 'center',
+                borderColor: '#6485E6',
+                marginBottom: 10
+              }}>
+              <TextInput onChangeText={(num) => { setNUM(num) }}
+                style={{ width: chwidth - 50, marginLeft: 10 }}
+                placeholder={'NUM'}
+              />
             </View>
           </View>
         </View>
       </ScrollView>
 
-      <View style={{ marginLeft: 20 }}>
-        <TouchableWithoutFeedback onPress={() => { databasefunction() }}>
-          <View
-            style={{
-              borderRadius: 60,
-              borderWidth: 1,
-              width: chwidth - 40,
-              height: 50,
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: '#6485E6',
-              borderColor: '#6485E6',
-            }}>
-            <Text style={{ color: 'white' }}>회원가입하기</Text>
-          </View>
-        </TouchableWithoutFeedback>
 
-        <View style={{ marginTop: 60 }}
+      <TouchableWithoutFeedback onPress={() => { databasefunction() }}>
+        <View
           style={{
-            marginTop: 15,
+            marginLeft: 20,
             borderRadius: 60,
             borderWidth: 1,
             width: chwidth - 40,
             height: 50,
             alignItems: 'center',
             justifyContent: 'center',
+            backgroundColor: '#6485E6',
             borderColor: '#6485E6',
           }}>
+          <Text style={{ color: 'white' }}>회원가입하기</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={() => {
+        navigation.goBack()
+      }}>
+        <View style={{
+          marginLeft: 20,
+          marginTop: 10,
+          borderRadius: 60,
+          borderWidth: 1,
+          width: chwidth - 40,
+          height: 50,
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderColor: '#6485E6',
+          marginBottom: 10
+        }}>
           <Text style={{ color: 'black' }}>뒤로가기</Text>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
+
+
     </SafeAreaView>
   );
 };
