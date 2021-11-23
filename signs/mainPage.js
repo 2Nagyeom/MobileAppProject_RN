@@ -17,7 +17,8 @@ import {
     TouchableOpacity,
     Dimensions,
     Alert,
-    Modal
+    Modal,
+    Platform
 } from 'react-native';
 
 import database from '@react-native-firebase/database';
@@ -209,7 +210,8 @@ const mainPage = () => {
                     <TouchableWithoutFeedback onPress={() => { openControlPanel() }}>
                         <SafeAreaView style={{
                             position: 'absolute',
-                            marginTop: 45,
+                            marginTop: Platform.OS === 'ios' ? 45 : 10,
+                            marginLeft: 10,
                             width: 50,
                             height: 50,
                             borderRadius: 5,
