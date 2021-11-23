@@ -17,4 +17,4 @@ yarn add recoil //recoil 상태 관리 라이브러리
 
 yarn add @react-native-firebase/storage //파이어베이스에 사진 저장하기
 
-
+yarn add react-native-splash-screen //스플래시 이미지 적용 라이브러리

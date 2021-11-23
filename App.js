@@ -28,6 +28,7 @@ import { NavigationContainer } from '@react-navigation/native'; //화면을 쌓�
 import { createNativeStackNavigator } from '@react-navigation/native-stack'; //레이어 위에 올라가는 화면들!
 import { RecoilRoot } from 'recoil';
 import m_storedetailPage from './manager/m_storedetailPage';
+import SplashScreen from 'react-native-splash-screen';
 
 
 const Stack = createNativeStackNavigator(); //화면 전환을 어떻게 할것인가! 그중에서 스택방식!
@@ -36,6 +37,12 @@ const Stack = createNativeStackNavigator(); //화면 전환을 어떻게 할것�
 //save plz korean 
 const App = () => {
 
+
+  useEffect(() => {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 1000);
+  }, []);
 
   return (
     <RecoilRoot>
