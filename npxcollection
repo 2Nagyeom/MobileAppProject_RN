@@ -10,11 +10,7 @@ npm install --save react-native-calendars //달력 보여주는 라이브러리
 npm install react-native-date-picker //시간 선택용 라이브러리
 yarn add @gorhom/bottom-sheet@^4 //버튼 누르면 하단 사이드바 나오게 하는 라이브러리
 yarn add react-native-reanimated react-native-gesture-handler //위의 라이브러리 하위 속성
-
 yarn add rn-qr-generator //QR코드 생성하는 라이브러리
-
 yarn add recoil //recoil 상태 관리 라이브러리
-
 yarn add @react-native-firebase/storage //파이어베이스에 사진 저장하기
-
 yarn add react-native-splash-screen //스플래시 이미지 적용 라이브러리

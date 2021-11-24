@@ -18,11 +18,16 @@ import {
 import { useNavigation } from '@react-navigation/core';
 import AutoHeightImage from 'react-native-auto-height-image';
 import { NUMBER_BINARY_OPERATORS } from '@babel/types';
+import { useRecoilState } from 'recoil';
+import { atomUserId } from '../atom/atom';
 
 const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
 
 const imformationrevisePage = () => {
+    const navigation = useNavigation();
+
+
     const [pwd, setPWD] = useState('');
     const [pwd_check, setPWD_CHECK] = useState('');
     const [num, setNUM] = useState('');
@@ -30,27 +35,31 @@ const imformationrevisePage = () => {
     const [storenum, setSTORENUM] = useState('');
     const [storeadress, setADRESS] = useState('');
 
-    const navigation = useNavigation();
+    const [atId, setAtId] = useRecoilState(atomUserId) //유저 아이디
+
+
 
     const databasefunction = () => {
 
         database()
-            .ref('/users/Test/')
+            .ref(`/users/${atId}/`)
             .once('value').then((snapshot) => {
-                console.log('삽입성공');
-                if (pwd == snapshot.val().pwd)
-                    Alert.alert("저번 비밀번호랑 같아요!")
-                else if (pwd != pwd_check)
-                    Alert.alert("비밀번호 불일치!")
-                else {
-                    Alert.alert("변경되었습니다!")
-                    database()
-                        .ref('/users/Test')
-                        .update({
-                            pwd: pwd,
-                            phone: num,
-                        })
-                        .then(() => console.log('Data updated.'));
+                if (snapshot.val() != null) {
+                    if (pwd == snapshot.val().pwd)
+                        Alert.alert("저번 비밀번호랑 같아요!")
+                    else if (pwd != pwd_check)
+                        Alert.alert("비밀번호 불일치!")
+                    else {
+                        console.log('삽입성공');
+                        Alert.alert("변경되었습니다!")
+                        database()
+                            .ref('/users/Test')
+                            .update({
+                                pwd: pwd,
+                                phone: num,
+                            })
+                            .then(() => console.log('Data updated.'));
+                    }
                 }
             });
     };
@@ -156,6 +165,7 @@ const imformationrevisePage = () => {
                                         style={{
                                             marginTop: 15,
                                             borderRadius: 60,
+                                            marginBottom: 10,
                                             borderWidth: 1,
                                             width: chwidth - 40,
                                             height: 50,
@@ -173,37 +183,42 @@ const imformationrevisePage = () => {
                 </View>
             </ScrollView>
 
+            <View>
+                <TouchableWithoutFeedback onPress={() => { databasefunction() }}>
+                    <View
+                        style={{
+                            marginLeft: 20,
+                            borderRadius: 60,
+                            borderWidth: 1,
+                            width: chwidth - 40,
+                            height: 50,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundColor: '#6485E6',
+                            borderColor: '#6485E6',
+                        }}>
+                        <Text style={{ color: 'white' }}>수정하기</Text>
+                    </View>
+                </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback onPress={() => { databasefunction() }}>
-                <View
-                    style={{
+                <TouchableWithoutFeedback onPress={() => {
+                    navigation.goBack()
+                }}>
+                    <View style={{
                         marginLeft: 20,
+                        marginTop: 5,
+                        marginBottom: 10,
                         borderRadius: 60,
                         borderWidth: 1,
                         width: chwidth - 40,
                         height: 50,
                         alignItems: 'center',
                         justifyContent: 'center',
-                        backgroundColor: '#6485E6',
                         borderColor: '#6485E6',
                     }}>
-                    <Text style={{ color: 'white' }}>수정하기</Text>
-                </View>
-            </TouchableWithoutFeedback>
-
-            <View style={{ marginTop: 60 }}
-                style={{
-                    marginLeft: 20,
-                    marginTop: 15,
-                    borderRadius: 60,
-                    borderWidth: 1,
-                    width: chwidth - 40,
-                    height: 50,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    borderColor: '#6485E6',
-                }}>
-                <Text style={{ color: 'black' }}>뒤로가기</Text>
+                        <Text style={{ color: 'black' }}>뒤로가기</Text>
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
         </SafeAreaView >
     );

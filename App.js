@@ -22,6 +22,7 @@ import storelookPage from './signs/storelookPage';
 import imformationrevisePage from './signs/imformationrevisePage';
 import CurrentReservation from './reservation/currentReservation';
 import qrcodePage from './reservation/qrCodePage';
+import qrcodeconfirmPage from './manager/qrcodeconfirmPage';
 
 
 
@@ -53,9 +54,11 @@ const App = () => {
 
           <Stack.Screen name="로그인 페이지" component={LoginPage} />
           <Stack.Screen name="회원가입 페이지" component={RegisterPage} />
+
+          <Stack.Screen name="정보수정 페이지" component={imformationrevisePage} />
+
           <Stack.Screen name="메인페이지" component={mainPage} />
           <Stack.Screen name="예약페이지" component={storeregisterPage} />
-
           <Stack.Screen name="큐얼코드페이지" component={qrcodePage} />
 
 
@@ -66,6 +69,7 @@ const App = () => {
           <Stack.Screen name="메뉴 삭제 페이지" component={menudeletePage} />
           <Stack.Screen name="예약자 확인 페이지" component={m_storedetailPage} />
           <Stack.Screen name="현재예약자 확인 페이지" component={CurrentReservation} />
+          <Stack.Screen name="큐얼코드 확인페이지" component={qrcodeconfirmPage} />
 
 
           {/* <Stack.Screen name="매장둘러보기페이지" component={storelookPage} />
