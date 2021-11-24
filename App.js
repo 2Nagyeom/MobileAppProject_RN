@@ -52,8 +52,6 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
 
-          {/* 이거 로그인 페이지 위로 올려서 확인하면되! 지금 연결되어있는 곳이 없어서! */}
-          <Stack.Screen name="큐얼코드 체크" component={QrCodeCheck} />
 
           <Stack.Screen name="로그인 페이지" component={LoginPage} />
           <Stack.Screen name="회원가입 페이지" component={RegisterPage} />
@@ -74,6 +72,8 @@ const App = () => {
           <Stack.Screen name="현재예약자 확인 페이지" component={CurrentReservation} />
           <Stack.Screen name="큐얼코드 확인페이지" component={qrcodeconfirmPage} />
 
+          {/* 이거 로그인 페이지 위로 올려서 확인하면되! 지금 연결되어있는 곳이 없어서! */}
+          <Stack.Screen name="큐얼코드 체크" component={QrCodeCheck} />
 
 
 

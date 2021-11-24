@@ -153,7 +153,7 @@ const ManagerPage = () => {
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback onPress={() => navigation.navigate("메뉴 삭제 페이지")}>
             <View style={{
-              marginTop: 60,
+              marginTop: 10,
               borderRadius: 60,
               borderWidth: 1,
               marginLeft: 20,
@@ -164,6 +164,20 @@ const ManagerPage = () => {
               borderColor: '#6485E6',
             }}>
               <Text style={{ color: 'black' }}>메뉴 불러오기</Text>
+            </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={() => navigation.navigate("정보수정 페이지")}>
+            <View style={{
+              marginTop: 5,
+              borderRadius: 60,
+              marginLeft: 20,
+              width: chwidth - 40,
+              height: 50,
+              alignItems: 'center',
+
+              borderColor: '#6485E6',
+            }}>
+              <Text style={{ color: '#6485E6', fontWeight: 'bold', fontSize: 18 }}>개인정보수정</Text>
             </View>
           </TouchableWithoutFeedback>
         </View>
