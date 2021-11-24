@@ -62,12 +62,12 @@ const ManagerPage = () => {
         justifyContent: 'center',
         backgroundColor: "#F7F7F7"
       }}>
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('큐얼코드 확인 페이지')}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate()}>
           <View style={{
-            height: '5%',
             flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: 'flex-end'
+            justifyContent: 'flex-end',
+            marginRight: 5,
           }}>
             <AutoHeightImage
               width={40}

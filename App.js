@@ -22,7 +22,7 @@ import storelookPage from './signs/storelookPage';
 import imformationrevisePage from './signs/imformationrevisePage';
 import CurrentReservation from './reservation/currentReservation';
 import qrcodePage from './reservation/qrCodePage';
-import qrcodeconfirmPage from './manager/qrcodeconfirmPage';
+
 
 
 import { NavigationContainer } from '@react-navigation/native'; //화면을 쌓아주는 레이어!
@@ -66,7 +66,6 @@ const App = () => {
           <Stack.Screen name="메뉴 삭제 페이지" component={menudeletePage} />
           <Stack.Screen name="예약자 확인 페이지" component={m_storedetailPage} />
           <Stack.Screen name="현재예약자 확인 페이지" component={CurrentReservation} />
-          <Stack.Screen name="큐얼코드 확인 페이지" component={qrcodeconfirmPage} />
 
 
           {/* <Stack.Screen name="매장둘러보기페이지" component={storelookPage} />

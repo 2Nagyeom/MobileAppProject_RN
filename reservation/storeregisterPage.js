@@ -138,6 +138,7 @@ const storeregisterPage = () => {
                     disableArrowRight={true}
                     disableAllTouchEventsForDisabledDays={true}
                     enableSwipeMonths={true}
+
                 />
             </View>
             <View style={{
