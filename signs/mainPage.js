@@ -32,6 +32,7 @@ import Drawer from 'react-native-drawer';
 const Logo = require('../img/logo.png');
 const logout = require('../img/logout.png');
 const finish = require('../img/finish.png');
+const revise = require('../img/revise.png');
 
 const chwidth = Dimensions.get('window').width;
 
@@ -457,7 +458,7 @@ const ControlPanel = () => {
                     <View style={{ marginLeft: 30, justifyContent: 'center' }}>
                         <AutoHeightImage
                             width={20}
-                            source={finish}
+                            source={revise}
                         />
                     </View>
                     <Text style={{ fontSize: 20, margin: 10 }}>정보수정</Text>
