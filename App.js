@@ -31,6 +31,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'; //�
 import { RecoilRoot } from 'recoil';
 import m_storedetailPage from './manager/m_storedetailPage';
 import SplashScreen from 'react-native-splash-screen';
+import QrCodeCheck from './manager/qrcodeCheck';
 
 
 const Stack = createNativeStackNavigator(); //화면 전환을 어떻게 할것인가! 그중에서 스택방식!
@@ -70,6 +71,10 @@ const App = () => {
           <Stack.Screen name="예약자 확인 페이지" component={m_storedetailPage} />
           <Stack.Screen name="현재예약자 확인 페이지" component={CurrentReservation} />
           <Stack.Screen name="큐얼코드 확인페이지" component={qrcodeconfirmPage} />
+
+          {/* 이거 로그인 페이지 위로 올려서 확인하면되! 지금 연결되어있는 곳이 없어서! */}
+          <Stack.Screen name="큐얼코드 체크" component={QrCodeCheck} />
+
 
 
           {/* <Stack.Screen name="매장둘러보기페이지" component={storelookPage} />

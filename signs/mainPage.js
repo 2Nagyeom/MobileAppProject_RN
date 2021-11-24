@@ -249,10 +249,8 @@ const mainPage = () => {
                                 </View>
 
                                 <TouchableWithoutFeedback onPress={() => {
-                                    // navigation.navigate('실시간 예약 페이지')
                                     Alert.alert(`현재 ${atStoreName} 상황`,
-                                        `테이블 수 : ${currentTable}개\n대기 팀 수 : ${currentWait}팀\n\n예약하시겠습니까?
-                                `, [
+                                        `테이블 수 : ${currentTable}개\n대기 팀 수 : ${currentWait}팀\n\n예약하시겠습니까?`, [
                                         {
                                             text: "취소",
                                             onPress: () => console.log("Cancel Pressed"),
@@ -266,36 +264,34 @@ const mainPage = () => {
                                         }
                                     ])
                                 }}>
-                                    <View
-                                        style={{
-                                            marginTop: 20,
-                                            borderRadius: 60,
-                                            borderWidth: 1,
-                                            width: chwidth - 40,
-                                            height: 50,
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            backgroundColor: '#6485E6',
-                                            borderColor: '#6485E6',
-                                        }}>
+                                    <View style={{
+                                        marginTop: 20,
+                                        borderRadius: 60,
+                                        borderWidth: 1,
+                                        width: chwidth - 40,
+                                        height: 50,
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        backgroundColor: '#6485E6',
+                                        borderColor: '#6485E6',
+                                    }}>
                                         <Text style={{ color: 'white' }}>실시간 예약하기</Text>
                                     </View>
                                 </TouchableWithoutFeedback>
                                 <TouchableWithoutFeedback onPress={() => {
                                     navigation.navigate('예약페이지')
                                 }}>
-                                    <View
-                                        style={{
-                                            marginTop: 10,
-                                            borderRadius: 60,
-                                            borderWidth: 1,
-                                            width: chwidth - 40,
-                                            height: 50,
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            backgroundColor: '#6485E6',
-                                            borderColor: '#6485E6',
-                                        }}>
+                                    <View style={{
+                                        marginTop: 10,
+                                        borderRadius: 60,
+                                        borderWidth: 1,
+                                        width: chwidth - 40,
+                                        height: 50,
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        backgroundColor: '#6485E6',
+                                        borderColor: '#6485E6',
+                                    }}>
                                         <Text style={{ color: 'white' }}>예약하기</Text>
                                     </View>
                                 </TouchableWithoutFeedback>
@@ -306,17 +302,16 @@ const mainPage = () => {
                                         textAlign: 'center'
                                     }}>문의하기</Text>
                                 </View>
-                                <View
-                                    style={{
-                                        marginTop: 5,
-                                        borderRadius: 60,
-                                        borderWidth: 1,
-                                        width: chwidth - 40,
-                                        height: 60,
-                                        borderColor: '#6485E6',
-                                        justifyContent: 'center',
-                                        flexDirection: 'row',
-                                    }}>
+                                <View style={{
+                                    marginTop: 5,
+                                    borderRadius: 60,
+                                    borderWidth: 1,
+                                    width: chwidth - 40,
+                                    height: 60,
+                                    borderColor: '#6485E6',
+                                    justifyContent: 'center',
+                                    flexDirection: 'row',
+                                }}>
                                     <View style={{
                                         justifyContent: 'center',
                                         alignItems: 'center',
@@ -344,6 +339,16 @@ const mainPage = () => {
                                         />
                                     </View>
                                 </View>
+
+
+                                <View style={{ width: chwidth, backgroundColor: 'yellow' }}>
+                                    <ScrollView style={{}} horizontal={true} >
+
+                                    </ScrollView>
+                                </View>
+
+
+
                                 <View style={{
                                     marginTop: 50,
                                 }}>
