@@ -89,6 +89,19 @@ const mainPage = () => {
         })
     }
 
+    function QrcodeSave(params) {
+        database()
+            .ref(`/users/${atId}`)
+            .update({
+                qrcode: atStoreNum + '/' + atId + '/now/now/' + atPhone,
+            })
+            .then(() => {
+                console.log('-------------------qrsave 완료---------------------');
+
+                // navigation.navigate('큐얼코드페이지')
+            });
+    }
+
 
     function qrcodereservation(params) {
         database()
@@ -102,6 +115,7 @@ const mainPage = () => {
                 storeName: atStoreName,
             })
             .then(() => {
+                QrcodeSave()
                 waitPlusOne()
             })
     }

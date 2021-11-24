@@ -72,6 +72,7 @@ const QrCodeCheck = () => {
                     marginTop: 5,
                     marginLeft: 20,
                     borderRadius: 60,
+                    marginBottom: 10,
                     borderWidth: 1,
                     width: chwidth - 40,
                     height: 50,

@@ -62,7 +62,7 @@ const ManagerPage = () => {
         justifyContent: 'center',
         backgroundColor: "#F7F7F7"
       }}>
-        <TouchableWithoutFeedback onPress={() => navigation.navigate()}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('큐얼코드 확인페이지')}>
           <View style={{
             flexDirection: 'row',
             alignItems: 'center',
