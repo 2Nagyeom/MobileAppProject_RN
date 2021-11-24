@@ -53,9 +53,11 @@ const App = () => {
 
           <Stack.Screen name="로그인 페이지" component={LoginPage} />
           <Stack.Screen name="회원가입 페이지" component={RegisterPage} />
+
+          <Stack.Screen name="정보수정 페이지" component={imformationrevisePage} />
+
           <Stack.Screen name="메인페이지" component={mainPage} />
           <Stack.Screen name="예약페이지" component={storeregisterPage} />
-
           <Stack.Screen name="큐얼코드페이지" component={qrcodePage} />
 
 

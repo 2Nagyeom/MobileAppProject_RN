@@ -446,6 +446,18 @@ const ControlPanel = () => {
                     <Text style={{ fontSize: 20, margin: 10 }}>예약확인</Text>
                 </View>
             </TouchableWithoutFeedback>
+
+            <TouchableWithoutFeedback onPress={() => { navigation.navigate('정보수정 페이지') }}>
+                <View style={{ flexDirection: 'row' }}>
+                    <View style={{ marginLeft: 30, justifyContent: 'center' }}>
+                        <AutoHeightImage
+                            width={20}
+                            source={finish}
+                        />
+                    </View>
+                    <Text style={{ fontSize: 20, margin: 10 }}>정보수정</Text>
+                </View>
+            </TouchableWithoutFeedback>
         </SafeAreaView>
     )
 }

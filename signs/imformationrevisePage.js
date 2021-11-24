@@ -23,6 +23,9 @@ const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
 
 const imformationrevisePage = () => {
+    const navigation = useNavigation();
+
+
     const [pwd, setPWD] = useState('');
     const [pwd_check, setPWD_CHECK] = useState('');
     const [num, setNUM] = useState('');
@@ -30,27 +33,31 @@ const imformationrevisePage = () => {
     const [storenum, setSTORENUM] = useState('');
     const [storeadress, setADRESS] = useState('');
 
-    const navigation = useNavigation();
+    const [atId, setAtId] = useRecoilState(atomUserId) //유저 아이디
+
+
 
     const databasefunction = () => {
 
         database()
-            .ref('/users/Test/')
+            .ref(`/users/${atId}/`)
             .once('value').then((snapshot) => {
-                console.log('삽입성공');
-                if (pwd == snapshot.val().pwd)
-                    Alert.alert("저번 비밀번호랑 같아요!")
-                else if (pwd != pwd_check)
-                    Alert.alert("비밀번호 불일치!")
-                else {
-                    Alert.alert("변경되었습니다!")
-                    database()
-                        .ref('/users/Test')
-                        .update({
-                            pwd: pwd,
-                            phone: num,
-                        })
-                        .then(() => console.log('Data updated.'));
+                if (snapshot.val() != null) {
+                    if (pwd == snapshot.val().pwd)
+                        Alert.alert("저번 비밀번호랑 같아요!")
+                    else if (pwd != pwd_check)
+                        Alert.alert("비밀번호 불일치!")
+                    else {
+                        console.log('삽입성공');
+                        Alert.alert("변경되었습니다!")
+                        database()
+                            .ref('/users/Test')
+                            .update({
+                                pwd: pwd,
+                                phone: num,
+                            })
+                            .then(() => console.log('Data updated.'));
+                    }
                 }
             });
     };
