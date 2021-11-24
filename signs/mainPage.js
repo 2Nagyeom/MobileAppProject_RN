@@ -52,7 +52,7 @@ const mainPage = () => {
         bottomSheetModalRef.current?.present();
     }, []);
     const handleSheetChanges = (index) => {
-        console.log(index)
+        // console.log(index)
         if (index === -1) {
             setMapHeight('100%')
         } else {
@@ -122,6 +122,8 @@ const mainPage = () => {
     const [atStoreNum, setAtStoreNum] = useRecoilState(atomStorenum) //마커 선택한 스토어 번호
     const [atStoreName, setAtStoreName] = useRecoilState(atomStoreName) //마커 선택한 스토어 이름
 
+    const [storeMenuArray, setStoreMenuArray] = useState([])
+
     const [mapheight, setMapHeight] = useState('100%'); //마커 클릭시 맵의 크기 변경을 위한 함수
 
     const [pName, setPName] = useState('이름!');
@@ -129,6 +131,25 @@ const mainPage = () => {
     const [pTime, setPTime] = useState('영업시간!');
     const [PNumber, setPNumber] = useState('전화번호!');
     //바텀 시트에 들어갈 값들!
+
+    function StoreMenuLoad(params) {
+        const dataRef = database().ref('/menu/M1')
+
+        dataRef.once('value').then((res) => {
+            if (res.val() != null) {
+                console.log(res.val())
+            } else {
+                console.log('메뉴불러오기 실패');
+            }
+        })
+
+    }
+
+    useEffect(() => {
+        console.log(atStoreNum)
+        StoreMenuLoad()
+    }, [atStoreNum])
+
 
     const styles = StyleSheet.create({
         map: {
@@ -174,11 +195,11 @@ const mainPage = () => {
                             longitudeDelta: 0.025, //경도 확대(1에 가까워질 수록 zoom out)
                         }}>
                         {storeArray.map((value, index) => {
-                            console.log(value)
+                            // console.log(value)
                             return (
                                 <Marker key={index} title={value.name} identifier={value.name} onPress={
                                     (e) => {
-                                        console.log(e.nativeEvent)
+                                        // console.log(e.nativeEvent)
                                         // Alert.alert(e.id + '클릭됨')
                                         handlePresentModalPress()
                                         setPName(value.name)
