@@ -18,6 +18,8 @@ import {
 import { useNavigation } from '@react-navigation/core';
 import AutoHeightImage from 'react-native-auto-height-image';
 import { NUMBER_BINARY_OPERATORS } from '@babel/types';
+import { useRecoilState } from 'recoil';
+import { atomUserId } from '../atom/atom';
 
 const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
@@ -163,6 +165,7 @@ const imformationrevisePage = () => {
                                         style={{
                                             marginTop: 15,
                                             borderRadius: 60,
+                                            marginBottom: 10,
                                             borderWidth: 1,
                                             width: chwidth - 40,
                                             height: 50,
@@ -180,37 +183,42 @@ const imformationrevisePage = () => {
                 </View>
             </ScrollView>
 
+            <View>
+                <TouchableWithoutFeedback onPress={() => { databasefunction() }}>
+                    <View
+                        style={{
+                            marginLeft: 20,
+                            borderRadius: 60,
+                            borderWidth: 1,
+                            width: chwidth - 40,
+                            height: 50,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundColor: '#6485E6',
+                            borderColor: '#6485E6',
+                        }}>
+                        <Text style={{ color: 'white' }}>수정하기</Text>
+                    </View>
+                </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback onPress={() => { databasefunction() }}>
-                <View
-                    style={{
+                <TouchableWithoutFeedback onPress={() => {
+                    navigation.goBack()
+                }}>
+                    <View style={{
                         marginLeft: 20,
+                        marginTop: 5,
+                        marginBottom: 10,
                         borderRadius: 60,
                         borderWidth: 1,
                         width: chwidth - 40,
                         height: 50,
                         alignItems: 'center',
                         justifyContent: 'center',
-                        backgroundColor: '#6485E6',
                         borderColor: '#6485E6',
                     }}>
-                    <Text style={{ color: 'white' }}>수정하기</Text>
-                </View>
-            </TouchableWithoutFeedback>
-
-            <View style={{ marginTop: 60 }}
-                style={{
-                    marginLeft: 20,
-                    marginTop: 15,
-                    borderRadius: 60,
-                    borderWidth: 1,
-                    width: chwidth - 40,
-                    height: 50,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    borderColor: '#6485E6',
-                }}>
-                <Text style={{ color: 'black' }}>뒤로가기</Text>
+                        <Text style={{ color: 'black' }}>뒤로가기</Text>
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
         </SafeAreaView >
     );
