@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     SafeAreaView,
     ScrollView,
@@ -29,6 +29,7 @@ const chwidth = Dimensions.get('window').width;
 
 
 const qrcodeconfirmPage = () => {
+    const navigation = useNavigation();
 
     const [currentWait, setCurrentWait] = useState(0)
     const [currentTable, setCurrentTable] = useState(0)
@@ -43,6 +44,8 @@ const qrcodeconfirmPage = () => {
     const [userPh, setUserPh] = useState('')
     const [userStoreName, setUserStoreName] = useState('')
     const [userStoreNum, setUserStoreNum] = useState('')
+    const [userStoreDate, setUserStoreDate] = useState('')
+    const [userStoreDay, setUserStoreDay] = useState('')
     /////////////////////////
 
     // const databasefunction = () => {
@@ -57,10 +60,32 @@ const qrcodeconfirmPage = () => {
     //         });
     // };
 
-    const [id, setID] = useState('');
-    const [pwd, setPWD] = useState('');
+    function dataDelete(params) {
+        const dataRef = database().ref('/reserve/' + userStoreNum + '/' + userId)
 
-    const navigation = useNavigation();
+
+        dataRef.once('value').then((res) => {
+            console.log(res.val() + userStoreName + userId);
+            if (res.val()) {
+                dataRef.remove().then(() => {
+                    Alert.alert('입장 완료가 확인되었습니다!')
+                    navigation.goBack()
+                })
+            }
+        })
+    }
+
+    useEffect(() => {
+        if (userStoreNum) {
+            const dataRef = database().ref('/store/' + userStoreNum)
+            dataRef.once('value').then((res) => {
+                if (res.val()) {
+                    setUserStoreName(res.val().name)
+                }
+            })
+        }
+    }, [userStoreNum])
+
 
     return (
 
@@ -89,12 +114,22 @@ const qrcodeconfirmPage = () => {
                         buttonNegative: 'Cancel',
                     }}
                     onGoogleVisionBarcodesDetected={({ barcodes }) => {
-                        if (barcodes) {
-                            console.log(barcodes[0].data);
-                            setIsQrDetect(true)
-                        } else {
+                        if (Object.keys(barcodes).length > 0) {
+                            console.log(barcodes[0].data)
 
+                            // setUserStoreName()
+                            setUserStoreNum(barcodes[0].data.split('/')[0])
+                            setUserPh(barcodes[0].data.split('/')[4])
+                            setUserId(barcodes[0].data.split('/')[1])
+                            setUserStoreDate(barcodes[0].data.split('/')[2])
+                            setUserStoreDay(barcodes[0].data.split('/')[3])
+                            setIsQrDetect(true)
                         }
+                        // if (barcodes[0].data !== null) {
+                        //     console.log(barcodes[0].data);
+                        // } else {
+
+                        // }
                     }}
                 >
 
@@ -132,35 +167,69 @@ const qrcodeconfirmPage = () => {
 
             <Modal visible={isQrDetect} animationType={'slide'}>
                 <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
-                    <View style={{ flex: 1 }}>
-                        <Text>가계이름</Text>
-                        <Text>아이디</Text>
-                        <Text>전화번호</Text>
-
-                        <Text>위 고객의 입장을 확인하시겠습니까?</Text>
-                    </View>
-
                     <View style={{
+                        padding: 20,
+                        justifyContent: 'center',
                         width: chwidth - 40,
                         marginLeft: 20,
-                        padding: 10,
-                        marginBottom: 10,
+                        borderRadius: 20,
+                        borderWidth: 10,
+                        borderColor: '#6485E6',
+                        marginTop: 20,
+                    }}>
+                        <View style={{
+                            alignItems: 'flex-start',
+                            marginLeft: 20,
+                        }}>
+                            <Text style={{ textAlign: 'left', fontSize: 20, fontWeight: 'bold', marginBottom: 40 }}>매장 이름 : {userStoreName}</Text>
+                            <Text style={{ textAlign: 'left', fontSize: 20, fontWeight: 'bold', marginBottom: 40 }}>아이디 : {userId}</Text>
+                            <Text style={{ textAlign: 'left', fontSize: 20, fontWeight: 'bold', marginBottom: 40 }}>전화번호 : {userPh}</Text>
+                            <Text style={{ textAlign: 'left', fontSize: 20, fontWeight: 'bold', marginBottom: 40 }}>예약날짜 : {userStoreDate == 'now' ? '오늘' : userStoreDate}</Text>
+                            <Text style={{ textAlign: 'left', fontSize: 20, fontWeight: 'bold', marginBottom: 40 }}>예약시간 : {userStoreDay == 'now' ? '현재 입장' : userStoreDay}</Text>
+                        </View>
+                    </View>
+                    <View style={{
+                        flex: 1,
                         alignItems: 'center',
                         justifyContent: 'center',
-                        backgroundColor: 'yellow'
+                        width: chwidth - 40,
+                        marginLeft: 20
                     }}>
-                        <Text>확인</Text>
+                        <Text style={{ textAlign: 'center', fontSize: 35, fontWeight: 'bold' }}>위 고객의 입장을</Text>
+                        <Text style={{ textAlign: 'center', fontSize: 35, fontWeight: 'bold' }}>확인하시겠습니까?</Text>
                     </View>
+
+                    <TouchableWithoutFeedback onPress={() => {
+                        dataDelete()
+                    }}>
+                        <View style={{
+                            marginLeft: 20,
+                            borderRadius: 60,
+                            borderWidth: 1,
+                            width: chwidth - 40,
+                            height: 50,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundColor: '#6485E6',
+                            borderColor: '#6485E6',
+                        }}>
+                            <Text>확인</Text>
+                        </View>
+                    </TouchableWithoutFeedback>
 
                     <TouchableWithoutFeedback onPress={() => { navigation.goBack() }}>
                         <View style={{
-                            width: chwidth - 40,
+                            marginTop: 5,
                             marginLeft: 20,
-                            padding: 10,
+                            borderRadius: 60,
                             marginBottom: 10,
+                            borderWidth: 1,
+                            width: chwidth - 40,
+                            height: 50,
                             alignItems: 'center',
                             justifyContent: 'center',
-                            backgroundColor: 'yellow'
+                            backgroundColor: 'white',
+                            borderColor: '#6485E6',
                         }}>
                             <Text>취소</Text>
                         </View>
