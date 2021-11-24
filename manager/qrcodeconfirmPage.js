@@ -38,17 +38,24 @@ const qrcodeconfirmPage = () => {
     const [atManagernum, setAtManagernum] = useRecoilState(atomManagernum)
     const [atId, setAtId] = useRecoilState(atomUserId) //유저 아이디
 
-    const databasefunction = () => {
-        database()
-            .ref('/users/' + id)
-            .once('value')
-            .then((snapshot) => {
-                console.log('-------------------로그인정보---------------------');
-                console.log(snapshot.val());
-                setAtId(id);
-                setAtManagernum(snapshot.val().M_num);
-            });
-    };
+    //qr에서 뽑은데이터들
+    const [userId, setUserId] = useState('')
+    const [userPh, setUserPh] = useState('')
+    const [userStoreName, setUserStoreName] = useState('')
+    const [userStoreNum, setUserStoreNum] = useState('')
+    /////////////////////////
+
+    // const databasefunction = () => {
+    //     database()
+    //         .ref('/users/' + id)
+    //         .once('value')
+    //         .then((snapshot) => {
+    //             console.log('-------------------로그인정보---------------------');
+    //             console.log(snapshot.val());
+    //             setAtId(id);
+    //             setAtManagernum(snapshot.val().M_num);
+    //         });
+    // };
 
     const [id, setID] = useState('');
     const [pwd, setPWD] = useState('');
