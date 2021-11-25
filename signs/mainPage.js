@@ -147,11 +147,21 @@ const mainPage = () => {
     //바텀 시트에 들어갈 값들!
 
     function StoreMenuLoad(params) {
-        const dataRef = database().ref('/menu/M1')
+        const dataRef = database().ref('/memu/' + atStoreNum)
 
         dataRef.once('value').then((res) => {
+            console.log(res.val())
             if (res.val() != null) {
-                console.log(res.val())
+                var json = Object.keys(res.val())
+                var value = Object.values(res.val())
+                var array = []
+                setStoreMenuArray([])
+                for (var i = 0; i < json.length; i++) {
+                    console.log(value[i]);
+                    array.push(value[i])
+                    console.log(array)
+                }
+                setStoreMenuArray(array)
             } else {
                 console.log('메뉴불러오기 실패');
             }
@@ -161,7 +171,11 @@ const mainPage = () => {
 
     useEffect(() => {
         console.log(atStoreNum)
-        StoreMenuLoad()
+
+        if (atStoreNum != '') {
+            StoreMenuLoad()
+        }
+
     }, [atStoreNum])
 
 
@@ -377,16 +391,23 @@ const mainPage = () => {
                                 </View>
 
 
-                                <View style={{ width: chwidth, backgroundColor: 'yellow' }}>
+                                <View style={{ width: chwidth, backgroundColor: 'yellow', marginTop: 10 }}>
                                     <ScrollView style={{}} horizontal={true} >
-
+                                        {storeMenuArray.map((value, index) => {
+                                            return (
+                                                <View key={index} style={{ marginRight: 10 }}>
+                                                    <Text>{value.이름}</Text>
+                                                    <Text>{value.가격}</Text>
+                                                </View>
+                                            )
+                                        })}
                                     </ScrollView>
                                 </View>
 
 
 
                                 <View style={{
-                                    marginTop: 50,
+                                    marginTop: 30,
                                 }}>
                                     <View style={{
                                         width: chwidth - 50,

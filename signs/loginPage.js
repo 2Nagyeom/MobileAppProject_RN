@@ -121,6 +121,7 @@ const LoginPage = () => {
                   placeholder={'PWD'}
                   onChangeText={setPWD}
                   value={pwd}
+                  secureTextEntry={true}
                 />
               </View>
             </View>

@@ -25,3 +25,8 @@ export const atomManagernum = atom({
     default: '',
 });
 
+export const imagebase64 = atom({
+    key: 'imagebase64',
+    default: '',
+});
+
