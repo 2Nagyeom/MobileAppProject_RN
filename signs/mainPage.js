@@ -390,22 +390,6 @@ const mainPage = () => {
                                     </View>
                                 </View>
 
-
-                                <View style={{ width: chwidth, backgroundColor: 'yellow', marginTop: 10 }}>
-                                    <ScrollView style={{}} horizontal={true} >
-                                        {storeMenuArray.map((value, index) => {
-                                            return (
-                                                <View key={index} style={{ marginRight: 10 }}>
-                                                    <Text>{value.이름}</Text>
-                                                    <Text>{value.가격}</Text>
-                                                </View>
-                                            )
-                                        })}
-                                    </ScrollView>
-                                </View>
-
-
-
                                 <View style={{
                                     marginTop: 30,
                                 }}>

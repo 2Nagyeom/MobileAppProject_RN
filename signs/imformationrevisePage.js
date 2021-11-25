@@ -132,7 +132,7 @@ const imformationrevisePage = () => {
                                 />
                             </View>
                             <View>
-                                <View
+                                {/* <View
                                     style={{
                                         marginTop: 35,
                                         width: chwidth - 40,
@@ -176,7 +176,7 @@ const imformationrevisePage = () => {
                                         }}>
                                         <Text style={{ color: 'white' }}>인증하기</Text>
                                     </View>
-                                </TouchableWithoutFeedback>
+                                </TouchableWithoutFeedback> */}
                             </View>
                         </View>
                     </View>

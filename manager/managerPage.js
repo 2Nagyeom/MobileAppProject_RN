@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -36,17 +36,23 @@ const ManagerPage = () => {
   const [atManagernum, setAtManagernum] = useRecoilState(atomManagernum)
   const [atId, setAtId] = useRecoilState(atomUserId) //유저 아이디
 
-  // const databasefunction = () => {
-  //   database()
-  //     .ref('/users/' + id)
-  //     .once('value')
-  //     .then((snapshot) => {
-  //       console.log('-------------------로그인정보---------------------');
-  //       console.log(snapshot.val());
-  //       setAtId(id);
-  //       setAtManagernum(snapshot.val().M_num);
-  //     });
-  // };
+  const databasefunction = () => {
+    database()
+      .ref('/store/' + atManagernum)
+      .once('value', (snapshot) => {
+        console.log('-------------------로그인정보---------------------');
+        console.log(snapshot.val());
+        setCurrentWait(snapshot.val().wait)
+        setCurrentTable(snapshot.val().quest)
+      })
+  };
+
+  useEffect(() => {
+    databasefunction()
+  }, [])
+
+
+
 
   const [id, setID] = useState('');
   const [pwd, setPWD] = useState('');
@@ -151,7 +157,7 @@ const ManagerPage = () => {
               <Text style={{ color: 'black' }}>예약자 확인하기</Text>
             </View>
           </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={() => navigation.navigate("메뉴 삭제 페이지")}>
+          {/* <TouchableWithoutFeedback onPress={() => navigation.navigate("메뉴 삭제 페이지")}>
             <View style={{
               marginTop: 10,
               borderRadius: 60,
@@ -165,7 +171,7 @@ const ManagerPage = () => {
             }}>
               <Text style={{ color: 'black' }}>메뉴 불러오기</Text>
             </View>
-          </TouchableWithoutFeedback>
+          </TouchableWithoutFeedback> */}
           <TouchableWithoutFeedback onPress={() => navigation.navigate("정보수정 페이지")}>
             <View style={{
               marginTop: 5,

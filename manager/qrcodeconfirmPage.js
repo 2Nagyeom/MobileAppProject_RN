@@ -102,34 +102,24 @@ const qrcodeconfirmPage = () => {
                     type={RNCamera.Constants.Type.back}
                     flashMode={RNCamera.Constants.FlashMode.on}
                     androidCameraPermissionOptions={{
-                        title: 'Permission to use camera',
-                        message: 'We need your permission to use your camera',
-                        buttonPositive: 'Ok',
-                        buttonNegative: 'Cancel',
-                    }}
-                    androidRecordAudioPermissionOptions={{
-                        title: 'Permission to use audio recording',
-                        message: 'We need your permission to use your audio',
-                        buttonPositive: 'Ok',
-                        buttonNegative: 'Cancel',
+                        title: '카메라 권한',
+                        message: '카메라 사용을 위해 권한을 허용해주세요!',
+                        buttonPositive: '허용',
+                        buttonNegative: '취소',
                     }}
                     onGoogleVisionBarcodesDetected={({ barcodes }) => {
                         if (Object.keys(barcodes).length > 0) {
-                            console.log(barcodes[0].data)
 
-                            // setUserStoreName()
                             setUserStoreNum(barcodes[0].data.split('/')[0])
-                            setUserPh(barcodes[0].data.split('/')[4])
                             setUserId(barcodes[0].data.split('/')[1])
                             setUserStoreDate(barcodes[0].data.split('/')[2])
                             setUserStoreDay(barcodes[0].data.split('/')[3])
-                            setIsQrDetect(true)
-                        }
-                        // if (barcodes[0].data !== null) {
-                        //     console.log(barcodes[0].data);
-                        // } else {
+                            setUserPh(barcodes[0].data.split('/')[4])
+                            setTimeout(() => {
+                                setIsQrDetect(true)
 
-                        // }
+                            }, 1000);
+                        }
                     }}
                 >
 

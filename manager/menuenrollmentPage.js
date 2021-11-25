@@ -21,10 +21,10 @@ const Logo = require('../img/logo.png');
 const chwidth = Dimensions.get('window').width;
 
 const menuenrollmentPage = () => {
-
-    const reference = storage().ref('/img/t-shirts/black-t-shirt-sm.png');
-
     const navigation = useNavigation();
+
+
+
 
     return (
 

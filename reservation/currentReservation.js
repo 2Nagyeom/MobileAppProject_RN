@@ -239,6 +239,7 @@ const CurrentReservation = () => {
                     marginLeft: 20,
                     width: chwidth - 40,
                     height: 50,
+                    marginBottom: 10,
                     alignItems: 'center',
                     justifyContent: 'center',
                     borderColor: '#6485E6',
